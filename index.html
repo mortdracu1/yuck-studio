@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YUCK</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Mono:wght@400;700&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f0ece0;
+      --acid: #c8f000;
+      --dim: rgba(240, 236, 224, 0.45);
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Share Tech Mono', monospace;
+      overflow: hidden;
+      cursor: none;
+    }
+
+    /* custom cursor */
+    .cursor {
+      position: fixed;
+      width: 10px; height: 10px;
+      background: var(--acid);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease;
+      mix-blend-mode: difference;
+    }
+
+    /* VIDEO BG */
+    .video-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .video-bg video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+    }
+
+    /* placeholder until video is added */
+    .video-bg .placeholder {
+      width: 100%; height: 100%;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(255,255,255,0.015) 2px,
+          rgba(255,255,255,0.015) 4px
+        ),
+        radial-gradient(ellipse at 20% 50%, #1a1a00 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, #0a0a0a 0%, transparent 50%),
+        var(--black);
+      animation: noise 0.5s steps(1) infinite;
+    }
+
+    @keyframes noise {
+      0%   { background-position: 0 0, 0 0, 0 0; }
+      25%  { background-position: -2px 1px, 0 0, 0 0; }
+      50%  { background-position: 1px -1px, 0 0, 0 0; }
+      75%  { background-position: -1px 2px, 0 0, 0 0; }
+      100% { background-position: 0 0, 0 0, 0 0; }
+    }
+
+    /* OVERLAY */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.3) 0%,
+        rgba(10,10,10,0.1) 40%,
+        rgba(10,10,10,0.7) 100%
+      );
+      z-index: 1;
+    }
+
+    /* MAIN CONTENT */
+    .content {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* ASCII YUCK */
+    .ascii-wrap {
+      line-height: 1.15;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+    }
+
+    .ascii-wrap pre {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(6px, 1.1vw, 13px);
+      color: var(--white);
+      text-align: left;
+      display: inline-block;
+      white-space: pre;
+    }
+
+    /* subtitle */
+    .subtitle {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(10px, 1.2vw, 14px);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards 0.2s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* CTA */
+    .cta {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(10px, 1vw, 13px);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--acid);
+      text-decoration: none;
+      padding: 0.85rem 2.5rem;
+      display: inline-block;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards 0.5s;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .cta:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* BOTTOM LEFT TAG */
+    .tag {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: rgba(240,236,224,0.2);
+      z-index: 2;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    /* SCANLINE */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.08) 3px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+
+  <!-- VIDEO BACKGROUND — drop your video file in and replace the src -->
+  <div class="video-bg">
+    <!-- <video autoplay muted loop playsinline>
+      <source src="assets/reel.mp4" type="video/mp4">
+    </video> -->
+    <div class="placeholder"></div>
+  </div>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <div class="ascii-wrap">
+      <pre id="ascii"></pre>
+    </div>
+    <p class="subtitle">art collective</p>
+    <a href="projects.html" class="cta">all projects</a>
+  </div>
+
+  <div class="tag">yuck.studio</div>
+
+  <script>
+    // cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    // ASCII art for YUCK
+    const ASCII = `
+██╗   ██╗██╗   ██╗ ██████╗██╗  ██╗
+╚██╗ ██╔╝██║   ██║██╔════╝██║ ██╔╝
+ ╚████╔╝ ██║   ██║██║     █████╔╝ 
+  ╚██╔╝  ██║   ██║██║     ██╔═██╗ 
+   ██║   ╚██████╔╝╚██████╗██║  ██╗
+   ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝`.trimStart();
+
+    const el = document.getElementById('ascii');
+    let i = 0;
+    const chars = ASCII.split('');
+    const SPEED = 8; // ms per char
+
+    function type() {
+      if (i < chars.length) {
+        el.textContent += chars[i];
+        i++;
+        setTimeout(type, SPEED);
+      }
+    }
+
+    type();
+  </script>
+</body>
+</html>
