@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iran vs. The World — e-lafdas™ by YUCK COLLECTIVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ── VARIABLES ── */
+:root {
+  --white: #FFFFFF;
+  --bg-alt: #F5F6F7;
+  --ink: #1A1A1A;
+  --muted: #6B6B6B;
+  --border: #DDDDE0;
+  --blue: #2E5B8A;
+  --blue-light: #E8F0F8;
+  --blue-dark: #1A3A5C;
+  --green: #2A7F6F;
+  --green-light: #E6F4F1;
+  --red: #C0392B;
+  --sand: #C8B89A;
+  --chart-grey: #C8C8C4;
+  --page-bg: #E8E9EC;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  background: var(--page-bg);
+  font-family: 'Georgia', serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--ink);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+.nav-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+.nav-logo span { color: #6BA3D6; }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── PAGE WRAPPER ── */
+.report-wrap {
+  margin-top: 48px;
+  padding: 40px 24px;
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── PAGE CARD ── */
+.page {
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+  margin-bottom: 2px;
+  position: relative;
+}
+
+/* ── COVER PAGE ── */
+.cover { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Split band */
+.cover-top-band {
+  height: 72px;
+  display: flex;
+  flex-shrink: 0;
+}
+.cover-top-band-left {
+  background: var(--blue);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+}
+.cover-top-band-divider {
+  width: 2px;
+  background: var(--white);
+  flex-shrink: 0;
+}
+.cover-top-band-right {
+  background: var(--green);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 48px;
+}
+.cover-brand {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.3px;
+}
+.cover-brand span { opacity: 0.65; font-weight: 400; }
+.cover-issue {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.75);
+  text-transform: uppercase;
+}
+
+.cover-body {
+  flex: 1;
+  padding: 80px 72px 0;
+  display: flex;
+  flex-direction: column;
+}
+.cover-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cover-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--blue);
+}
+.cover-title { margin-bottom: 24px; max-width: 720px; }
+.cover-title-line1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(40px, 5.5vw, 64px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  display: block;
+}
+.cover-title-line2 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(40px, 5.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--ink);
+  display: block;
+}
+.cover-subtitle {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 48px;
+  max-width: 520px;
+  line-height: 1.6;
+}
+.cover-rule { border: none; border-top: 1px solid var(--border); margin-bottom: 32px; }
+
+.cover-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.cover-meta-cell {
+  padding: 20px 24px;
+  border-right: 1px solid var(--border);
+}
+.cover-meta-cell:last-child { border-right: none; }
+.meta-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.meta-val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.cover-bottom-band {
+  background: var(--ink);
+  padding: 20px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+.cover-bottom-left {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.cover-bottom-right {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #6BA3D6;
+}
+
+/* ── REPORT PAGES ── */
+.report-page { padding: 64px 72px; }
+
+/* ── PAGE FOOTER ── */
+.page-footer {
+  border-top: 1px solid var(--border);
+  padding: 14px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+}
+.pf-left {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pf-right {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+/* ── SECTION HEADERS ── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.section-rule-top {
+  border: none;
+  border-top: 2px solid var(--blue);
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.section-desc {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  font-style: italic;
+}
+.section-rule-bottom {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+/* ── BODY TEXT ── */
+.body-text {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 20px;
+  max-width: 680px;
+}
+.body-text strong { font-weight: 700; }
+
+/* ── EXEC SUMMARY BOX ── */
+.exec-box {
+  border-left: 3px solid var(--blue);
+  background: var(--blue-light);
+  padding: 28px 32px;
+  margin: 32px 0;
+}
+.exec-box-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue-dark);
+  margin-bottom: 12px;
+}
+.exec-box p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+/* ── STAT ROW ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  margin: 32px 0;
+}
+.stat-cell {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell.highlight-blue { background: var(--blue); }
+.stat-cell.highlight-green { background: var(--green); }
+.stat-cell.highlight-blue .stat-num,
+.stat-cell.highlight-blue .stat-label,
+.stat-cell.highlight-green .stat-num,
+.stat-cell.highlight-green .stat-label { color: var(--white); }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── CHART WRAPPER ── */
+.chart-wrap { margin: 36px 0 8px; }
+.chart-exhibit {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.chart-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+.chart-source {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── TIMELINE TABLE ── */
+.timeline-track { border: 1px solid var(--border); }
+.tl-header-row {
+  display: grid;
+  grid-template-columns: 110px 100px 1fr 80px;
+  background: var(--ink);
+}
+.tl-header-row div {
+  padding: 10px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.tl-header-row div:last-child { border-right: none; }
+.tl-row {
+  display: grid;
+  grid-template-columns: 110px 100px 1fr 80px;
+  border-bottom: 1px solid var(--border);
+  align-items: stretch;
+}
+.tl-row:last-child { border-bottom: none; }
+.tl-row.us-event { background: #F0F4F8; }
+.tl-row.iran-event { background: #F0F6F4; }
+.tl-row.internet-event { background: #FDF8F2; }
+.tl-cell {
+  padding: 14px 16px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+.tl-cell:last-child { border-right: none; }
+.tl-cell span {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.tl-cell.event-text span {
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.tone-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.tone-kinetic { background: #F5C6BD; color: #8B2000; }
+.tone-stern { background: var(--blue-light); color: var(--blue-dark); }
+.tone-chaotic { background: #FEF3CD; color: #7A5800; }
+.tone-petty { background: var(--green-light); color: var(--green); }
+.tone-escalatory { background: #F0E8F8; color: #5A2D82; }
+.tone-asymmetric { background: #FCE4E1; color: var(--red); }
+.tone-troll { background: #E8F4F0; color: var(--green); }
+.tone-internet { background: #FEF9EC; color: #8B6914; }
+
+/* ── MEME AUDIT TABLE ── */
+.meme-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+}
+.meme-table th {
+  background: var(--ink);
+  color: white;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 500;
+}
+.meme-table td {
+  font-family: 'Georgia', serif;
+  font-size: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.meme-table tr:last-child td { border-bottom: none; }
+.meme-table tr.us-row td { background: #F8FAFB; }
+.meme-table tr.iran-row td { background: #F8FBFA; }
+.eff-score {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+.eff-high { color: var(--green); }
+.eff-mid { color: var(--blue); }
+.eff-low { color: var(--red); }
+
+/* ── ACCENT PIE ── */
+.accent-pie-wrap {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: var(--blue-light);
+  border: 1px solid var(--border);
+  padding: 28px 32px;
+  margin: 24px 0;
+}
+.accent-pie-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+  display: block;
+}
+.accent-pie-desc {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ── DONUT ── */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  background: var(--blue-light);
+  border: 1px solid var(--border);
+  padding: 32px;
+}
+.donut-legend { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.legend-item { display: flex; align-items: center; gap: 12px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.legend-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  flex: 1;
+}
+.legend-pct {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ── HORIZONTAL BAR ── */
+.hbar-chart { display: flex; flex-direction: column; gap: 10px; }
+.hbar-row { display: flex; align-items: center; gap: 12px; }
+.hbar-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  width: 240px;
+  flex-shrink: 0;
+  text-align: right;
+  line-height: 1.4;
+}
+.hbar-track {
+  flex: 1;
+  height: 26px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.hbar-fill {
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+  position: absolute;
+  left: 0; top: 0;
+}
+.hbar-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  width: 48px;
+  flex-shrink: 0;
+}
+
+/* ── BRAND DRIFT TIMELINE ── */
+.drift-wrap {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 32px 28px;
+}
+.drift-track {
+  position: relative;
+  padding-left: 24px;
+}
+.drift-track::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #2E5B8A 0%, #C8B89A 40%, #C0392B 100%);
+}
+.drift-item {
+  position: relative;
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+}
+.drift-item:last-child { margin-bottom: 0; }
+.drift-dot {
+  position: absolute;
+  left: -21px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.drift-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.drift-quote {
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-style: italic;
+}
+.drift-temp {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.temp-cold { background: var(--blue-light); color: var(--blue-dark); }
+.temp-warm { background: #FEF3CD; color: #7A5800; }
+.temp-hot { background: #FCE4E1; color: var(--red); }
+
+/* ── 2x2 MATRIX ── */
+.matrix-layout { display: flex; gap: 8px; align-items: stretch; }
+.matrix-y-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  flex-shrink: 0;
+  padding: 0 8px;
+}
+.matrix-content { flex: 1; }
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.matrix-cell { background: var(--white); padding: 22px; }
+.matrix-cell.active-blue { background: var(--blue); }
+.matrix-cell.active-green { background: var(--green); }
+.matrix-cell-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.matrix-cell.active-blue .matrix-cell-tag,
+.matrix-cell.active-blue .matrix-cell-name,
+.matrix-cell.active-blue .matrix-cell-verdict,
+.matrix-cell.active-blue .matrix-cell-desc { color: var(--white); }
+.matrix-cell.active-green .matrix-cell-tag,
+.matrix-cell.active-green .matrix-cell-name,
+.matrix-cell.active-green .matrix-cell-verdict,
+.matrix-cell.active-green .matrix-cell-desc { color: var(--white); }
+.matrix-cell-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.matrix-cell-verdict {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.matrix-cell.active-blue .matrix-cell-verdict { color: rgba(255,255,255,0.8); }
+.matrix-cell.active-green .matrix-cell-verdict { color: rgba(255,255,255,0.8); }
+.matrix-cell-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.matrix-x-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 6px;
+  padding: 0 1px;
+}
+.matrix-x-labels span {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── SCORECARD ── */
+.scorecard-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+}
+.scorecard-table th {
+  background: var(--ink);
+  color: white;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+}
+.scorecard-table td {
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+.scorecard-table tr:last-child td { border-bottom: none; }
+.scorecard-table tr.us-row td { background: #F8FAFB; }
+.scorecard-table tr.iran-row td { background: #F8FBFA; }
+.side-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.side-us { background: var(--blue-light); color: var(--blue-dark); }
+.side-iran { background: var(--green-light); color: var(--green); }
+.rating {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.r-poor { background: #FDE8E4; color: var(--red); }
+.r-very-poor { background: #F5C6BD; color: #8B2000; }
+.r-catastrophic { background: var(--red); color: white; }
+.r-good { background: #E6F4F0; color: var(--green); }
+.r-excellent { background: var(--green); color: white; }
+.r-questionable { background: #FEF3CD; color: #7A5800; }
+.r-inspired { background: var(--blue-light); color: var(--blue-dark); }
+.r-unforced { background: var(--bg-alt); color: var(--muted); }
+
+/* ── SIDE-BY-SIDE BARS ── */
+.comparison-chart { display: flex; flex-direction: column; gap: 14px; }
+.comp-row { display: flex; align-items: center; gap: 10px; }
+.comp-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  width: 200px;
+  flex-shrink: 0;
+  text-align: right;
+  line-height: 1.3;
+}
+.comp-bars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.comp-bar-row { display: flex; align-items: center; gap: 8px; }
+.comp-bar-track {
+  flex: 1;
+  height: 18px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.comp-bar-fill {
+  height: 100%;
+  border-radius: 0 2px 2px 0;
+  position: absolute;
+  left: 0; top: 0;
+}
+.comp-bar-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  width: 50px;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+/* ── DUAL LINE CHART ── */
+.dual-line-wrap {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 24px;
+}
+
+/* ── FINDINGS GRID ── */
+.findings-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  margin: 32px 0;
+}
+.finding-cell {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+}
+.finding-cell:last-child { border-right: none; }
+.finding-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.finding-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.finding-desc { font-size: 13px; line-height: 1.65; color: var(--ink); }
+
+/* ── VERDICT BOX ── */
+.verdict-box {
+  border: 2px solid var(--ink);
+  padding: 40px 48px;
+  margin: 32px 0;
+  position: relative;
+}
+.verdict-box::before {
+  content: 'VERDICT';
+  position: absolute;
+  top: -10px; left: 32px;
+  background: var(--white);
+  padding: 0 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--ink);
+}
+.verdict-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.verdict-item:last-child { border-bottom: none; padding-bottom: 0; }
+.verdict-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.verdict-val {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.verdict-val strong { font-weight: 700; color: var(--blue-dark); }
+
+/* ── CLOSING ── */
+.closing-line {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  line-height: 1.4;
+  text-align: center;
+  padding: 48px 0 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── BOTTOM BAR ── */
+.bottom-bar { background: var(--ink); padding: 0 24px; margin-top: 2px; }
+.bottom-bar-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.bottom-bar-text { display: flex; flex-direction: column; gap: 4px; }
+.bottom-bar-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+}
+.bottom-bar-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+.btn-download-bottom {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: #6BA3D6;
+  border: none;
+  padding: 12px 28px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.btn-download-bottom:hover { background: var(--blue); color: var(--white); }
+
+/* ── PRINT ── */
+@media print {
+  body { background: white; }
+  .site-nav, .bottom-bar { display: none; }
+  .report-wrap { margin-top: 0; padding: 0; }
+  .page { box-shadow: none; margin-bottom: 0; page-break-after: always; }
+  .page:last-child { page-break-after: avoid; }
+  .report-page { padding: 48px 64px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { margin: 0; size: A4; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .report-wrap { padding: 8px 0; }
+  .report-page { padding: 36px 24px; }
+  .cover-body { padding: 48px 28px 0; }
+  .cover-top-band-left, .cover-top-band-right { padding: 0 28px; }
+  .cover-bottom-band { padding: 20px 28px; }
+  .page-footer { padding: 14px 24px; }
+  .cover-meta-grid { grid-template-columns: 1fr 1fr; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .findings-row { grid-template-columns: 1fr; }
+  .hbar-label { width: 130px; font-size: 9px; }
+  .comp-label { width: 120px; font-size: 9px; }
+  .tl-header-row, .tl-row { grid-template-columns: 70px 80px 1fr 60px; }
+  .matrix-grid { grid-template-columns: 1fr; }
+  .donut-wrap { flex-direction: column; }
+  .verdict-item { grid-template-columns: 1fr; gap: 4px; }
+  .cover-title-line1, .cover-title-line2 { font-size: 32px; }
+  .bottom-bar-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <div class="nav-logo">e-lafdas<span>™</span> by YUCK COLLECTIVE</div>
+  <div class="nav-right">
+    <span class="nav-tag">April 2026</span>
+    <a href="index.html" style="font-family:'DM Mono',monospace;font-size:11px;color:inherit;text-decoration:none;opacity:0.5;margin-left:24px;letter-spacing:0.05em;">← All Reports</a>
+  </div>
+</nav>
+
+<div class="report-wrap">
+
+<!-- ═══════════════════ COVER ═══════════════════ -->
+<div class="page cover">
+  <div class="cover-top-band">
+    <div class="cover-top-band-left">
+      <div class="cover-brand">e-lafdas™ <span>by YUCK COLLECTIVE</span></div>
+    </div>
+    <div class="cover-top-band-divider"></div>
+    <div class="cover-top-band-right">
+      <div class="cover-issue">April 2026</div>
+    </div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">Intelligence Briefing</div>
+    <div class="cover-title">
+      <span class="cover-title-line1">Iran vs.</span>
+      <span class="cover-title-line2">The World</span>
+    </div>
+    <div class="cover-subtitle">A Geopolitical PR Disaster, Documented</div>
+    <hr class="cover-rule">
+    <div class="cover-meta-grid">
+      <div class="cover-meta-cell">
+        <div class="meta-key">Subject</div>
+        <div class="meta-val">The Islamic Republic of Iran (State PR Apparatus)</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="meta-key">Aggressor(s)</div>
+        <div class="meta-val">The Trump Administration; The Global Internet</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="meta-key">Classification</div>
+        <div class="meta-val">Asymmetric meme warfare / narrative collapse on multiple fronts simultaneously</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="meta-key">Outcome</div>
+        <div class="meta-val">Inconclusive. Both sides claim victory. Both sides are still posting.</div>
+      </div>
+    </div>
+    <div style="margin-bottom: 48px;">
+      <div class="exec-box">
+        <div class="exec-box-label">Executive Summary</div>
+        <p>In late March 2026, the United States and Israel launched coordinated strikes on Iranian military and nuclear infrastructure, triggering what analysts might call a "kinetic conflict." Iran's official response was to post a pomegranate juice video on Instagram. Simultaneously, the internet unearthed decade-old tweets from Iran's Supreme Leader in which he described himself as "naughty and playful" and women as flowers — prompting the global public to briefly forget there was a war on. <strong>This report examines the PR strategies of both sides, concludes that neither is winning the narrative, and documents the memes for posterity.</strong> @khamenei_ir (2013) is the only participant to emerge with an improved public perception.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom-band">
+    <div class="cover-bottom-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="cover-bottom-right">A YUCK COLLECTIVE Publication</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 1 · THE PLAYERS ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 01</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">The Players</h2>
+    <div class="section-desc">Who is posting, on what, and from where.</div>
+
+    <div class="stat-row">
+      <div class="stat-cell highlight-blue">
+        <div class="stat-num" style="color:white;">7</div>
+        <div class="stat-label">Active Iranian state accounts across platforms they ban for citizens</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">2013</div>
+        <div class="stat-label">Year @khamenei_ir began posting in English on Twitter</div>
+      </div>
+      <div class="stat-cell highlight-green">
+        <div class="stat-num" style="color:white;">0%</div>
+        <div class="stat-label">Iranian citizens with legal access to Instagram, where the pomegranate reel was posted</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">48h</div>
+        <div class="stat-label">Duration of Trump ultimatum. Compliance rate: also 0%.</div>
+      </div>
+    </div>
+
+    <p class="body-text"><strong>Iran's PR Apparatus.</strong> Iran fields a surprisingly active digital communications operation for a country that officially blocks most of the platforms it posts on. @khamenei_ir (X/Twitter) has been active since approximately 2013, posts in English, and maintains an archive of tweets about women's emotional needs, Jawaharlal Nehru, and cinema. The Iran Embassy in South Africa is responsible for the pomegranate juice reel — currently the most consequential diplomatic Instagram post of the conflict. The Iran Embassy in Pakistan posted the "DJ Trump" taunt during the missing pilot search, achieving the highest single-post engagement of any Iranian diplomatic account this week. IRGC-linked Telegram channels handle rebranding operations and footage releases, including the "Operation Epic Fear" rename. Khatam al-Anbiya Central HQ called Trump's ultimatum "helpless, nervous, and stupid." Those were the exact words.</p>
+
+    <p class="body-text"><strong>The Trump Administration.</strong> @realDonaldTrump (Truth Social) serves as primary channel for ultimatums, rescue confirmations, and casualty claims. The phrase "all hell will rain down" was posted at approximately the same hour as the pomegranate juice reel went viral. The U.S. Military named their operation "Epic Fury." They stood by it.</p>
+
+    <p class="body-text"><strong>The Global Internet.</strong> Unaffiliated third party. No geopolitical agenda. Fully committed. Responsible for surfacing the 2013 @khamenei_ir tweet archive and coining the phrase "Pookie Khamenei." Operates across X, Reddit, and Instagram simultaneously with no coordination overhead whatsoever.</p>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">2</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 2 · CHRONOLOGY ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 02</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Incident Chronology</h2>
+    <div class="section-desc">Eight events across seven days. Two sides. One internet.</div>
+
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 1</div>
+      <div class="chart-title">Event Timeline — March 31 to April 6, 2026</div>
+      <div class="timeline-track">
+        <div class="tl-header-row">
+          <div>Date</div>
+          <div>Side</div>
+          <div>Event</div>
+          <div>Tone</div>
+        </div>
+        <div class="tl-row us-event">
+          <div class="tl-cell"><span>Mar 31</span></div>
+          <div class="tl-cell"><span>US / Israel</span></div>
+          <div class="tl-cell event-text"><span>Coordinated strikes launched on Iranian military and nuclear infrastructure</span></div>
+          <div class="tl-cell" style="justify-content:center;"><span class="tone-pill tone-kinetic">Kinetic</span></div>
+        </div>
+        <div class="tl-row iran-event">
+          <div class="tl-cell"><span>Apr 1</span></div>
+          <div class="tl-cell"><span>Iran</span></div>
+          <div class="tl-cell event-text"><span>Khatam al-Anbiya HQ calls strikes a "miscalculation," vows response</span></div>
+          <div class="tl-cell" style="justify-content:center;"><span class="tone-pill tone-stern">Stern</span></div>
+        </div>
+        <div class="tl-row iran-event">
+          <div class="tl-cell"><span>Apr 2</span></div>
+          <div class="tl-cell"><span>Iran</span></div>
+          <div class="tl-cell event-text"><span>Iran Embassy (South Africa) posts pomegranate juice soldier reel on Instagram — a platform banned in Iran</span></div>
+          <div class="tl-cell" style="justify-content:center;"><span class="tone-pill tone-chaotic">Chaotic</span></div>
+        </div>
+        <div class="tl-row iran-event">
+          <div class="tl-cell"><span>Apr 3</span></div>
+          <div class="tl-cell"><span>Iran</span></div>
+          <div class="tl-cell event-text"><span>IRGC Telegram channels begin calling "Operation Epic Fury" → "Operation Epic Fear"</span></div>
+          <div class="tl-cell" style="justify-content:center;"><span class="tone-pill tone-petty">Petty ★</span></div>
+        </div>
+        <div class="tl-row us-event">
+          <div class="tl-cell"><span>Apr 4</span></div>
+          <div class="tl-cell"><span>US</span></div>
+          <div class="tl-cell event-text"><span>Trump posts 48-hour ultimatum on Truth Social: "all hell will rain down"</span></div>
+          <div class="tl-cell" style="justify-content:center;"><span class="tone-pill tone-escalatory">Escalatory</span></div>
+        </div>
+        <div class="tl-row iran-event">
+          <div class="tl-cell"><span>Apr 4–5</span></div>
+          <div class="tl-cell"><span>Iran</span></div>
+          <div class="tl-cell event-text"><span>US F-15E downed; Iran claims second aircraft destroyed during rescue mission</span></div>
+          <div class="tl-cell" style="justify-content:center;"><span class="tone-pill tone-asymmetric">Asymmetric</span></div>
+        </div>
+        <div class="tl-row iran-event">
+          <div class="tl-cell"><span>Apr 5</span></div>
+          <div class="tl-cell"><span>Iran</span></div>
+          <div class="tl-cell event-text"><span>Iran Embassy Pakistan: "Your sons are more in danger with DJ Trump" — posted during active pilot search</span></div>
+          <div class="tl-cell" style="justify-content:center;"><span class="tone-pill tone-troll">Troll</span></div>
+        </div>
+        <div class="tl-row internet-event">
+          <div class="tl-cell"><span>Apr 5–6</span></div>
+          <div class="tl-cell"><span>Internet</span></div>
+          <div class="tl-cell event-text"><span>Khamenei's 2013 tweets resurface globally. "Pookie Khamenei" trends. Neither side had planned for this.</span></div>
+          <div class="tl-cell" style="justify-content:center;"><span class="tone-pill tone-internet">Unaffiliated</span></div>
+        </div>
+      </div>
+      <div class="chart-source">Source: Six r/worldnews threads, X discourse, and international press. Methodology: reading the internet so you don't have to. ★ Petty, in the complimentary sense.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">3</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 3 · MEME AUDIT ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 03</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">The Meme Audit</h2>
+    <div class="section-desc">Each significant post or action examined for intent, reception, and effectiveness. Rated on a 10-point scale.</div>
+
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 2</div>
+      <div class="chart-title">Post-by-Post Comms Effectiveness Review — Both Sides</div>
+      <table class="meme-table">
+        <thead>
+          <tr>
+            <th style="width:24%">Post / Action</th>
+            <th style="width:14%">Source</th>
+            <th style="width:10%">Platform</th>
+            <th style="width:24%">Public Reception</th>
+            <th style="width:18%">Notes</th>
+            <th style="width:10%">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="iran-row">
+            <td>Pomegranate juice soldier reel</td>
+            <td>Iran Embassy, S. Africa</td>
+            <td>Instagram</td>
+            <td>Viral globally, 500K+ views before removal</td>
+            <td>Achieved virality, then deleted — the Streisand Effect has entered the chat</td>
+            <td class="eff-score eff-high">8/10</td>
+          </tr>
+          <tr class="iran-row">
+            <td>"Operation Epic Fear" rebrand</td>
+            <td>IRGC Telegram channels</td>
+            <td>Telegram</td>
+            <td>Picked up by international press within hours</td>
+            <td>Cost: $0. Return: immeasurable.</td>
+            <td class="eff-score eff-high">7/10</td>
+          </tr>
+          <tr class="iran-row">
+            <td>"Hey Trump, You're Fired!"</td>
+            <td>Zolfaqari, IRGC</td>
+            <td>X</td>
+            <td>Widely shared, cited in international media</td>
+            <td>Landed cleanly. Brevity served it well.</td>
+            <td class="eff-score eff-high">7/10</td>
+          </tr>
+          <tr class="iran-row">
+            <td>"DJ Trump" / pilot post</td>
+            <td>Iran Embassy, Pakistan</td>
+            <td>X / Instagram</td>
+            <td>6,100+ likes; international pickup</td>
+            <td>Precise timing during active pilot search. Maximum discomfort.</td>
+            <td class="eff-score eff-high">8/10</td>
+          </tr>
+          <tr class="iran-row">
+            <td>"Helpless, nervous, stupid"</td>
+            <td>Khatam al-Anbiya HQ</td>
+            <td>Official statement</td>
+            <td>Quoted globally</td>
+            <td>Clinical. Quotable. Three adjectives, no evidence required.</td>
+            <td class="eff-score eff-mid">6/10</td>
+          </tr>
+          <tr class="us-row">
+            <td>"All hell will rain down"</td>
+            <td>Donald Trump</td>
+            <td>Truth Social</td>
+            <td>Picked up by every outlet</td>
+            <td>Quoted everywhere. Effect: zero. Deadline passed.</td>
+            <td class="eff-score eff-mid">5/10</td>
+          </tr>
+          <tr class="us-row">
+            <td>Pilot rescue confirmation</td>
+            <td>Donald Trump</td>
+            <td>Truth Social</td>
+            <td>Confirmed, credible, widely reported</td>
+            <td>Factual win. Timely. Credible.</td>
+            <td class="eff-score eff-high">7/10</td>
+          </tr>
+          <tr class="us-row">
+            <td>Name operation "Epic Fury"</td>
+            <td>U.S. Military</td>
+            <td>Official</td>
+            <td>Immediately mocked; renamed by opponent within 48 hours</td>
+            <td>If you name something "Epic," you accept that the internet will finish the sentence.</td>
+            <td class="eff-score eff-low">3/10</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="chart-source">Source: Google, searched until page 4 (a personal record). e-lafdas™ Research, 2026.</div>
+    </div>
+
+    <!-- Accent: 0% deals -->
+    <div class="accent-pie-wrap">
+      <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
+        <circle cx="40" cy="40" r="36" fill="#2E5B8A" fill-opacity="0.12"/>
+        <circle cx="40" cy="40" r="36" fill="none" stroke="#2E5B8A" stroke-width="6"/>
+        <text x="40" y="46" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#2E5B8A" text-anchor="middle">0</text>
+      </svg>
+      <div>
+        <span class="accent-pie-label">0%</span>
+        <span class="accent-pie-desc">Exhibit A — Deals struck within Trump's 48-hour deadline<br>Source: The deadline. Which passed.</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">4</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 4 · SENTIMENT ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 04</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Sentiment Analysis</h2>
+    <div class="section-desc">Global public reaction, aggregated across Reddit, X, and international press. Approximate and illustrative.</div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+
+      <!-- CHART 3: Donut -->
+      <div class="chart-wrap" style="margin-top:0;">
+        <div class="chart-exhibit">Exhibit 3</div>
+        <div class="chart-title">Global Sentiment Distribution — All Platforms</div>
+        <div class="donut-wrap">
+          <svg width="140" height="140" viewBox="0 0 140 140" style="flex-shrink:0;">
+            <!-- 34% grey, 28% green, 19% blue, 12% muted, 7% sand -->
+            <!-- circumference r=50: 314.16 -->
+            <!-- 34%=106.8, 28%=88, 19%=59.7, 12%=37.7, 7%=22 -->
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#C8C8C4"
+              stroke-width="24" stroke-dasharray="106.8 314"
+              stroke-dashoffset="0" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#2A7F6F"
+              stroke-width="24" stroke-dasharray="88 314"
+              stroke-dashoffset="-106.8" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#2E5B8A"
+              stroke-width="24" stroke-dasharray="59.7 314"
+              stroke-dashoffset="-194.8" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#6B6B6B"
+              stroke-width="24" stroke-dasharray="37.7 314"
+              stroke-dashoffset="-254.5" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#C8B89A"
+              stroke-width="24" stroke-dasharray="22 314"
+              stroke-dashoffset="-292.2" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="37" fill="white"/>
+            <text x="70" y="66" font-family="Playfair Display, serif" font-size="16" font-weight="700" fill="#1A1A1A" text-anchor="middle">34%</text>
+            <text x="70" y="80" font-family="DM Mono, monospace" font-size="7" fill="#6B6B6B" text-anchor="middle">ENTERTAINED</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#C8C8C4"></div>
+              <div class="legend-label">Entertained, not picking sides</div>
+              <div class="legend-pct">34%</div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#2A7F6F"></div>
+              <div class="legend-label">Pro-Iran / anti-US intervention</div>
+              <div class="legend-pct">28%</div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#2E5B8A"></div>
+              <div class="legend-label">Pro-US / anti-Iran regime</div>
+              <div class="legend-pct">19%</div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#6B6B6B"></div>
+              <div class="legend-label">"Both sides are insane"</div>
+              <div class="legend-pct">12%</div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#C8B89A"></div>
+              <div class="legend-label">Focused only on Khamenei's 2013 tweets</div>
+              <div class="legend-pct">7%</div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-source">Source: Survey of 20 terminally online friends. Margin of error: vibes.</div>
+      </div>
+
+      <!-- CHART 4: Viral moments -->
+      <div class="chart-wrap" style="margin-top:0;">
+        <div class="chart-exhibit">Exhibit 4</div>
+        <div class="chart-title">Top Viral Moments by Estimated Cross-Platform Reach</div>
+        <div class="hbar-chart">
+          <div class="hbar-row">
+            <div class="hbar-label">"Pookie Khamenei" / 2013 tweets</div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:100%; background:#C8B89A;"></div></div>
+            <div class="hbar-val">50M+</div>
+          </div>
+          <div class="hbar-row">
+            <div class="hbar-label">Trump "all hell will rain down"</div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:80%; background:#2E5B8A;"></div></div>
+            <div class="hbar-val">40M+</div>
+          </div>
+          <div class="hbar-row">
+            <div class="hbar-label">Pomegranate juice reel</div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:1%; background:#2A7F6F;"></div></div>
+            <div class="hbar-val">~500K</div>
+          </div>
+          <div class="hbar-row">
+            <div class="hbar-label">"DJ Trump / sons in danger"</div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:0.5%; background:#2A7F6F;"></div></div>
+            <div class="hbar-val">~250K</div>
+          </div>
+          <div class="hbar-row">
+            <div class="hbar-label">"Operation Epic Fear" rebrand</div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:0.4%; background:#2A7F6F;"></div></div>
+            <div class="hbar-val">~200K</div>
+          </div>
+          <div class="hbar-row">
+            <div class="hbar-label">"Talking nonsense" — Rezaei</div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:0.16%; background:#C8C8C4;"></div></div>
+            <div class="hbar-val">~80K</div>
+          </div>
+        </div>
+        <div class="chart-source">Source: Cross-platform estimates. Methodology: extremely online. Note: pomegranate juice bar accurate at this scale.</div>
+      </div>
+    </div>
+
+    <p class="body-text" style="margin-top:32px;">The dominant sentiment cluster — 34% entertained, not picking sides — suggests the conflict's most significant audience is neither geopolitically aligned nor indifferent. They are watching a specific kind of content: two governments posting through a war. This audience segment is unlikely to appear in traditional conflict analysis and constitutes the primary readership of this report.</p>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">5</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 5 · STRUCTURAL DIAGNOSIS ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 05</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Structural Diagnosis</h2>
+    <div class="section-desc">Three explanatory frameworks for the PR dynamics of this conflict.</div>
+
+    <p class="body-text"><strong>I. The Domestic Firewall Paradox.</strong> Iran runs one of the most active state social media operations in the world on platforms it officially bans for its own citizens. The pomegranate juice reel was posted on Instagram. Instagram is blocked in Iran. The IRGC posts on Telegram. Telegram was blocked in Iran until 2020 and remains restricted. Iran's digital diplomacy exists entirely outside Iran's digital borders — a PR campaign for an audience that technically is not permitted to watch it.</p>
+
+    <p class="body-text"><strong>II. The Khamenei Brand Drift Index.</strong> The internet's discovery of @khamenei_ir's 2013 posts is not a political story. It is a brand consistency story. The delta between the account's 2013 voice ("naughty and playful," "she's a flower") and its 2026 voice ("irreparable consequences") represents the largest documented brand drift event in the history of verified Twitter accounts.</p>
+
+    <!-- CHART 5: Brand Drift -->
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 5</div>
+      <div class="chart-title">@khamenei_ir Brand Drift Index — Tone Temperature, 2013–2026</div>
+      <div class="drift-wrap">
+        <div class="drift-track">
+          <div class="drift-item">
+            <div class="drift-dot" style="background:#2E5B8A;"></div>
+            <div class="drift-year">2013</div>
+            <div class="drift-quote">"Before studying Glimpses of World History by Mr. Nehru, one should have some information about its writer…" — bookish uncle energy</div>
+            <div class="drift-temp temp-cold">1/10 · Warm</div>
+          </div>
+          <div class="drift-item">
+            <div class="drift-dot" style="background:#2E5B8A;"></div>
+            <div class="drift-year">2013</div>
+            <div class="drift-quote">"I went 2school w/a cloak since 1st days; it was uncomfortable 2wear it in front of other kids, but I tried 2make up 4it by being naughty&amp;playful"</div>
+            <div class="drift-temp temp-cold">1/10 · Genuinely adorable</div>
+          </div>
+          <div class="drift-item">
+            <div class="drift-dot" style="background:#4A7C8A;"></div>
+            <div class="drift-year">2013</div>
+            <div class="drift-quote">"Man has a responsibility to understand woman's emotional state… she's a flower, not a domestic servant"</div>
+            <div class="drift-temp temp-cold">3/10 · Mixed signals</div>
+          </div>
+          <div class="drift-item">
+            <div class="drift-dot" style="background:#7A8A5A;"></div>
+            <div class="drift-year">2015</div>
+            <div class="drift-quote">"I'm not into cinema… when it comes to poetry, I'm not just a typical audience. #AvidReader"</div>
+            <div class="drift-temp temp-cold">2/10 · Harmless</div>
+          </div>
+          <div class="drift-item">
+            <div class="drift-dot" style="background:#C8A070;"></div>
+            <div class="drift-year">2024</div>
+            <div class="drift-quote">"The US empire is in decline."</div>
+            <div class="drift-temp temp-warm">7/10 · Entering villain arc</div>
+          </div>
+          <div class="drift-item">
+            <div class="drift-dot" style="background:#C0392B;"></div>
+            <div class="drift-year">2026</div>
+            <div class="drift-quote">"The consequences will be irreparable."</div>
+            <div class="drift-temp temp-hot">10/10 · Final form</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-source">Source: @khamenei_ir (verified). Brand tracking conducted without consent. e-lafdas™ Research, 2026.</div>
+    </div>
+
+    <p class="body-text" style="margin-top: 24px;"><strong>III. The Naming Rights Problem.</strong> The U.S. named its military operation "Epic Fury." Within 48 hours, Iranian state channels had renamed it "Operation Epic Fear" and the international press had repeated it verbatim. The lesson: if you name something "Epic," you have accepted the possibility that the internet will finish that sentence for you.</p>
+
+    <!-- CHART 6: Operation Name Matrix -->
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 6</div>
+      <div class="chart-title">Operation Name Threat Matrix — Intimidation Potential vs. Mockability</div>
+      <div class="matrix-layout">
+        <div class="matrix-y-label">Intimidation Potential ↑ High</div>
+        <div class="matrix-content">
+          <div class="matrix-grid">
+            <div class="matrix-cell active-blue">
+              <div class="matrix-cell-tag">High intimidation · High mockability</div>
+              <div class="matrix-cell-name">"Operation Epic Fury"</div>
+              <div class="matrix-cell-verdict">⚠ Named this yourself, sir</div>
+              <div class="matrix-cell-desc">Maximum ambition, maximum exposure. Naming something "Epic" is an open invitation to the internet.</div>
+            </div>
+            <div class="matrix-cell">
+              <div class="matrix-cell-tag">High intimidation · Low mockability</div>
+              <div class="matrix-cell-name">"Operation Desert Storm"</div>
+              <div class="matrix-cell-verdict">✓ The Gold Standard</div>
+              <div class="matrix-cell-desc">Historical reference. Atmospheric. Nobody renamed it. This is what the bar looks like.</div>
+            </div>
+            <div class="matrix-cell active-green">
+              <div class="matrix-cell-tag">Low intimidation · Low mockability</div>
+              <div class="matrix-cell-name">"Operation Epic Fear"</div>
+              <div class="matrix-cell-verdict">✓ Petty but effective</div>
+              <div class="matrix-cell-desc">Iran's rename. Cost zero. Achieved maximum opponent humiliation. Spread without a press budget.</div>
+            </div>
+            <div class="matrix-cell">
+              <div class="matrix-cell-tag">Medium · Medium</div>
+              <div class="matrix-cell-name">"Operation Enduring Freedom"</div>
+              <div class="matrix-cell-verdict">— Fine, I suppose</div>
+              <div class="matrix-cell-desc">Earnest. Slightly vague. Not mockable. Not memorable. Safe and forgettable in equal measure.</div>
+            </div>
+          </div>
+          <div class="matrix-x-labels">
+            <span>← Low Mockability</span>
+            <span>High Mockability →</span>
+          </div>
+        </div>
+      </div>
+      <div class="chart-source">Source: Operation naming conventions, 1990–2026. Methodology: vibes, peer-reviewed.</div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">6</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 6 · KHAMENEI PROFILE ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 06</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">The @khamenei_ir Social Profile</h2>
+    <div class="section-desc">A close reading of one account. A case study in unintentional personal branding.</div>
+
+    <p class="body-text">The @khamenei_ir account has posted in English since approximately 2013 — a language spoken by an estimated 2% of Iran's population and 100% of the people Iran's foreign policy apparatus wants to influence. The account's most viral content of 2026 is from 2013. The most-quoted tweet of the entire Israel-Iran conflict is: <em>"I went 2school w/a cloak since1st days; it was uncomfortable 2wear it in front f other kids, but I tried 2make up 4it by being naughty&amp;playful."</em></p>
+
+    <p class="body-text">The internet's response during an active military conflict was to assign nicknames. "Pookie Khamenei" and "Supreme Leader of Vibes" were coined within hours. Selected representative comments follow: <em>"Born to be a lover, forced to be the supreme leader."</em> / <em>"Ayatollah Khamenei is the first guy to be uncancelled after old tweets resurfaced."</em> / <em>"You have a gym in the bunker?"</em> (in reply to his tweet about his father not wanting him to go to the gym).</p>
+
+    <!-- CHART 9: Reaction typology -->
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 7</div>
+      <div class="chart-title">@khamenei_ir Viral Tweet Reaction Typology — Distribution of Response Types</div>
+      <div class="hbar-chart">
+        <div class="hbar-row">
+          <div class="hbar-label" style="width:260px;">Affectionate irony ("pookie," "vibes")</div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:38%; background:#C8B89A;"></div></div>
+          <div class="hbar-val">38%</div>
+        </div>
+        <div class="hbar-row">
+          <div class="hbar-label" style="width:260px;">Geopolitical juxtaposition ("same guy who…")</div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:29%; background:#2E5B8A;"></div></div>
+          <div class="hbar-val">29%</div>
+        </div>
+        <div class="hbar-row">
+          <div class="hbar-label" style="width:260px;">Genuine confusion ("wait, this is real?")</div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:18%; background:#6B6B6B;"></div></div>
+          <div class="hbar-val">18%</div>
+        </div>
+        <div class="hbar-row">
+          <div class="hbar-label" style="width:260px;">Using it to mock Trump instead</div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:9%; background:#2A7F6F;"></div></div>
+          <div class="hbar-val">9%</div>
+        </div>
+        <div class="hbar-row">
+          <div class="hbar-label" style="width:260px;">Engaging with content earnestly</div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:6%; background:#C8C8C4;"></div></div>
+          <div class="hbar-val">6%</div>
+        </div>
+      </div>
+      <div class="chart-source">Source: X discourse analysis, April 2026. Illustrative. Methodology: desk research. Desk = bed. Research = scrolling.</div>
+    </div>
+
+    <hr class="section-rule-bottom">
+
+    <div class="section-label">Section 07</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">The Comms Scorecard</h2>
+    <div class="section-desc">Both sides audited. Decisions rated on their own terms.</div>
+
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 8</div>
+      <div class="chart-title">Decision-by-Decision Comms Performance Review — US and Iran</div>
+      <table class="scorecard-table">
+        <thead>
+          <tr>
+            <th style="width:10%">Side</th>
+            <th style="width:58%">Decision</th>
+            <th style="width:32%">Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="us-row">
+            <td><span class="side-tag side-us">US</span></td>
+            <td>Naming operation "Epic Fury"</td>
+            <td><span class="rating r-poor">Poor</span></td>
+          </tr>
+          <tr class="us-row">
+            <td><span class="side-tag side-us">US</span></td>
+            <td>48-hour ultimatum with no compliance mechanism</td>
+            <td><span class="rating r-very-poor">Very Poor</span></td>
+          </tr>
+          <tr class="us-row">
+            <td><span class="side-tag side-us">US</span></td>
+            <td>"All hell will rain down" on Truth Social</td>
+            <td><span class="rating r-questionable">Questionable</span></td>
+          </tr>
+          <tr class="us-row">
+            <td><span class="side-tag side-us">US</span></td>
+            <td>Confirming pilot rescue publicly and promptly</td>
+            <td><span class="rating r-good">Good</span></td>
+          </tr>
+          <tr class="iran-row">
+            <td><span class="side-tag side-iran">Iran</span></td>
+            <td>Pomegranate juice reel</td>
+            <td><span class="rating r-inspired">Inspired</span></td>
+          </tr>
+          <tr class="iran-row">
+            <td><span class="side-tag side-iran">Iran</span></td>
+            <td>Deleting the pomegranate juice reel</td>
+            <td><span class="rating r-catastrophic">Catastrophic</span></td>
+          </tr>
+          <tr class="iran-row">
+            <td><span class="side-tag side-iran">Iran</span></td>
+            <td>"Operation Epic Fear" rename</td>
+            <td><span class="rating r-excellent">Excellent</span></td>
+          </tr>
+          <tr class="iran-row">
+            <td><span class="side-tag side-iran">Iran</span></td>
+            <td>"DJ Trump" post during active pilot search</td>
+            <td><span class="rating r-inspired">Calculated</span></td>
+          </tr>
+          <tr class="iran-row">
+            <td><span class="side-tag side-iran">Iran</span></td>
+            <td>Maintaining a decade-old public English tweet archive</td>
+            <td><span class="rating r-unforced">Unforced Error</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="chart-source">Source: Common sense, distributed unevenly. e-lafdas™ Research, 2026.</div>
+    </div>
+
+    <!-- CHART 8: Side by side comms effectiveness -->
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 9</div>
+      <div class="chart-title">Comms Effectiveness by Category — US vs. Iran, Scored /10</div>
+      <div class="comparison-chart" style="background:var(--bg-alt); border:1px solid var(--border); padding:28px 24px;">
+        <div style="display:flex; gap:16px; margin-bottom:16px; justify-content:flex-end; padding-right:4px;">
+          <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:12px;background:#2E5B8A;border-radius:2px;"></div><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);">US</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:12px;background:#2A7F6F;border-radius:2px;"></div><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);">Iran</span></div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-label">Naming / Branding</div>
+          <div class="comp-bars">
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:30%; background:#2E5B8A;"></div></div>
+              <div class="comp-bar-label">3/10</div>
+            </div>
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:80%; background:#2A7F6F;"></div></div>
+              <div class="comp-bar-label">8/10</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-label">Timing of posts</div>
+          <div class="comp-bars">
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:60%; background:#2E5B8A;"></div></div>
+              <div class="comp-bar-label">6/10</div>
+            </div>
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:90%; background:#2A7F6F;"></div></div>
+              <div class="comp-bar-label">9/10</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-label">Meme output</div>
+          <div class="comp-bars">
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:20%; background:#2E5B8A;"></div></div>
+              <div class="comp-bar-label">2/10</div>
+            </div>
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:90%; background:#2A7F6F;"></div></div>
+              <div class="comp-bar-label">9/10</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-label">Factual credibility</div>
+          <div class="comp-bars">
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:70%; background:#2E5B8A;"></div></div>
+              <div class="comp-bar-label">7/10</div>
+            </div>
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:40%; background:#2A7F6F;"></div></div>
+              <div class="comp-bar-label">4/10</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-label">Archival self-awareness</div>
+          <div class="comp-bars">
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:90%; background:#2E5B8A;"></div></div>
+              <div class="comp-bar-label">9/10</div>
+            </div>
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:10%; background:#2A7F6F;"></div></div>
+              <div class="comp-bar-label">1/10</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-label">Overall narrative control</div>
+          <div class="comp-bars">
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:50%; background:#2E5B8A;"></div></div>
+              <div class="comp-bar-label">5/10</div>
+            </div>
+            <div class="comp-bar-row">
+              <div class="comp-bar-track"><div class="comp-bar-fill" style="width:50%; background:#2A7F6F;"></div></div>
+              <div class="comp-bar-label">5/10</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-source">Source: Overall narrative control: a statistical tie. Both sides celebrating. Neither side should. e-lafdas™ Research, 2026.</div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">7</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 7 · VERDICT ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 08</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Verdict</h2>
+    <div class="section-desc">Narrative control over seven days. Findings stated clinically.</div>
+
+    <!-- CHART 10: Dual line -->
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 10</div>
+      <div class="chart-title">Narrative Control Score — US vs. Iran vs. The Internet, March 31–April 6</div>
+      <div class="dual-line-wrap">
+        <svg width="100%" viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid -->
+          <line x1="80" y1="20" x2="80" y2="180" stroke="#DDDDE0" stroke-width="1"/>
+          <line x1="80" y1="180" x2="680" y2="180" stroke="#DDDDE0" stroke-width="1"/>
+          <line x1="80" y1="145" x2="680" y2="145" stroke="#DDDDE0" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="80" y1="110" x2="680" y2="110" stroke="#DDDDE0" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="80" y1="75" x2="680" y2="75" stroke="#DDDDE0" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="80" y1="40" x2="680" y2="40" stroke="#DDDDE0" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <!-- Y labels -->
+          <text x="72" y="184" font-family="DM Mono, monospace" font-size="9" fill="#6B6B6B" text-anchor="end">0</text>
+          <text x="72" y="149" font-family="DM Mono, monospace" font-size="9" fill="#6B6B6B" text-anchor="end">3</text>
+          <text x="72" y="114" font-family="DM Mono, monospace" font-size="9" fill="#6B6B6B" text-anchor="end">5</text>
+          <text x="72" y="79" font-family="DM Mono, monospace" font-size="9" fill="#6B6B6B" text-anchor="end">7</text>
+          <text x="72" y="44" font-family="DM Mono, monospace" font-size="9" fill="#6B6B6B" text-anchor="end">9</text>
+          <!-- X labels: 7 dates -->
+          <text x="80" y="196" font-family="DM Mono, monospace" font-size="8" fill="#6B6B6B" text-anchor="middle">Mar 31</text>
+          <text x="180" y="196" font-family="DM Mono, monospace" font-size="8" fill="#6B6B6B" text-anchor="middle">Apr 1</text>
+          <text x="280" y="196" font-family="DM Mono, monospace" font-size="8" fill="#6B6B6B" text-anchor="middle">Apr 2</text>
+          <text x="380" y="196" font-family="DM Mono, monospace" font-size="8" fill="#6B6B6B" text-anchor="middle">Apr 3</text>
+          <text x="480" y="196" font-family="DM Mono, monospace" font-size="8" fill="#6B6B6B" text-anchor="middle">Apr 4–5</text>
+          <text x="580" y="196" font-family="DM Mono, monospace" font-size="8" fill="#6B6B6B" text-anchor="middle">Apr 5</text>
+          <text x="680" y="196" font-family="DM Mono, monospace" font-size="8" fill="#6B6B6B" text-anchor="middle">Apr 6</text>
+          <!-- US line: 8,7,6,5,7,7,5,4 → y: 44,62,80,98,62,62,98,116 -->
+          <!-- scale: 0=180, 10=20, so y = 180 - (score*16) -->
+          <!-- 8=52, 7=68, 6=84, 5=100, 7=68, 7=68, 5=100, 4=116 -->
+          <polyline points="80,52 180,68 280,84 380,100 480,68 580,100 680,116"
+            fill="none" stroke="#2E5B8A" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Iran line: 2,4,7,7,5,5,3,4 → 148,116,68,68,100,100,132,116 -->
+          <polyline points="80,148 180,116 280,68 380,68 480,100 580,132 680,116"
+            fill="none" stroke="#2A7F6F" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Internet line appears at Apr 5: shoots up then both drop -->
+          <polyline points="480,180 580,36 680,148"
+            fill="none" stroke="#C8B89A" stroke-width="1.5" stroke-dasharray="5,3" stroke-linejoin="round"/>
+          <!-- Dots US -->
+          <circle cx="80" cy="52" r="3" fill="#2E5B8A"/>
+          <circle cx="180" cy="68" r="3" fill="#2E5B8A"/>
+          <circle cx="280" cy="84" r="3" fill="#2E5B8A"/>
+          <circle cx="380" cy="100" r="3" fill="#2E5B8A"/>
+          <circle cx="480" cy="68" r="3" fill="#2E5B8A"/>
+          <circle cx="580" cy="100" r="3" fill="#2E5B8A"/>
+          <circle cx="680" cy="116" r="3" fill="#2E5B8A"/>
+          <!-- Dots Iran -->
+          <circle cx="80" cy="148" r="3" fill="#2A7F6F"/>
+          <circle cx="180" cy="116" r="3" fill="#2A7F6F"/>
+          <circle cx="280" cy="68" r="3" fill="#2A7F6F"/>
+          <circle cx="380" cy="68" r="3" fill="#2A7F6F"/>
+          <circle cx="480" cy="100" r="3" fill="#2A7F6F"/>
+          <circle cx="580" cy="132" r="3" fill="#2A7F6F"/>
+          <circle cx="680" cy="116" r="3" fill="#2A7F6F"/>
+          <!-- Annotation: Pookie Khamenei -->
+          <line x1="580" y1="36" x2="580" y2="20" stroke="#C8B89A" stroke-width="1" stroke-dasharray="3,2"/>
+          <text x="584" y="18" font-family="DM Mono, monospace" font-size="8" fill="#8B6914">"Pookie Khamenei" trends</text>
+          <!-- Pomegranate annotation -->
+          <line x1="280" y1="68" x2="290" y2="50" stroke="#2A7F6F" stroke-width="1" stroke-dasharray="3,2"/>
+          <text x="294" y="48" font-family="DM Mono, monospace" font-size="8" fill="#2A7F6F">Pomegranate reel</text>
+          <!-- Legend -->
+          <line x1="400" y1="212" x2="420" y2="212" stroke="#2E5B8A" stroke-width="2"/>
+          <text x="424" y="215" font-family="DM Mono, monospace" font-size="9" fill="#1A1A1A">US</text>
+          <line x1="460" y1="212" x2="480" y2="212" stroke="#2A7F6F" stroke-width="2"/>
+          <text x="484" y="215" font-family="DM Mono, monospace" font-size="9" fill="#1A1A1A">Iran</text>
+          <line x1="520" y1="212" x2="540" y2="212" stroke="#C8B89A" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="544" y="215" font-family="DM Mono, monospace" font-size="9" fill="#1A1A1A">Internet</text>
+        </svg>
+      </div>
+      <div class="chart-source">Source: Illustrative. Based on observed narrative dominance across press and social media. One very long Reddit thread and a strong cup of chai.</div>
+    </div>
+
+    <div class="verdict-box">
+      <div class="verdict-item">
+        <div class="verdict-key">US narrative outcome</div>
+        <div class="verdict-val"><strong>Held military narrative. Lost meme war comprehensively.</strong> Named their operation "Epic." Got "Epic Fear'd."</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-key">Iran narrative outcome</div>
+        <div class="verdict-val"><strong>Won meme war. Lost military narrative. Got ambushed by own archive.</strong> The pomegranate juice deletion was the single largest unforced error of the conflict.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-key">@khamenei_ir (2013)</div>
+        <div class="verdict-val"><strong>Only participant to emerge with improved public perception.</strong> Did not plan this. Was not present for it. Probably does not know it happened.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-key">The pomegranate juice</div>
+        <div class="verdict-val">Whereabouts unknown. Presumed deleted.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-key">Overall narrative control</div>
+        <div class="verdict-val"><strong>5/10 each.</strong> A statistical tie. Both sides are celebrating. Neither side should.</div>
+      </div>
+    </div>
+
+    <div class="closing-line">
+      "In 2026, both sides had aircraft, missiles, and verified social media accounts. The missiles hit their targets. The tweets hit everyone."
+    </div>
+    <div style="text-align:center; margin-top:16px;">
+      <span style="font-family:'DM Mono',monospace; font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">— e-lafdas™ Research, April 2026</span>
+    </div>
+
+  </div>
+  <div class="page-footer" style="background:var(--ink);">
+    <div class="pf-left" style="color:rgba(255,255,255,0.4);">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right" style="color:rgba(255,255,255,0.4);">A YUCK COLLECTIVE Publication</div>
+  </div>
+</div>
+
+</div><!-- /report-wrap -->
+
+
+
+</body>
+</html>

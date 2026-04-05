@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The BGB Triangulation — e-lafdas™ by YUCK COLLECTIVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ── VARIABLES ── */
+:root {
+  --white: #FFFFFF;
+  --bg-alt: #F7F5F6;
+  --ink: #1A1A1A;
+  --muted: #6B6B6B;
+  --border: #E0DADD;
+  --plum: #8B4F7A;
+  --plum-light: #F5EEF3;
+  --plum-dark: #5C2E51;
+  --rose: #C17A8A;
+  --rose-light: #FAF0F2;
+  --slate: #7A9EB5;
+  --slate-light: #EEF4F8;
+  --sand: #B5A98A;
+  --sand-light: #F8F5EE;
+  --chart-grey: #C8C8C4;
+  --page-bg: #ECEAE8;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  background: var(--page-bg);
+  font-family: 'Georgia', serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--ink);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+.nav-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+}
+.nav-logo span { color: #C9A0BC; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── PAGE WRAPPER ── */
+.report-wrap {
+  margin-top: 48px;
+  padding: 40px 24px;
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── PAGE CARD ── */
+.page {
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+  margin-bottom: 2px;
+}
+
+/* ── COVER ── */
+.cover { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Three-way band */
+.cover-top-band {
+  height: 72px;
+  display: flex;
+  flex-shrink: 0;
+}
+.cover-band-s {
+  background: var(--rose);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+}
+.cover-band-j {
+  background: var(--sand);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border-left: 2px solid rgba(255,255,255,0.5);
+  border-right: 2px solid rgba(255,255,255,0.5);
+}
+.cover-band-h {
+  background: var(--slate);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 40px;
+}
+.band-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+.cover-brand {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+}
+.cover-brand span { opacity: 0.65; font-weight: 400; }
+.cover-issue {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.75);
+  text-transform: uppercase;
+}
+
+.cover-body {
+  flex: 1;
+  padding: 80px 72px 0;
+  display: flex;
+  flex-direction: column;
+}
+.cover-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cover-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--plum);
+}
+.cover-title { margin-bottom: 16px; max-width: 760px; }
+.cover-title-line1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  display: block;
+}
+.cover-title-line2 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--ink);
+  display: block;
+}
+.cover-subtitle {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  max-width: 560px;
+  line-height: 1.6;
+}
+.cover-legal {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--plum);
+  letter-spacing: 0.3px;
+  margin-bottom: 44px;
+  font-style: italic;
+}
+.cover-rule { border: none; border-top: 1px solid var(--border); margin-bottom: 32px; }
+
+.cover-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+.cover-meta-cell {
+  padding: 20px 24px;
+  border-right: 1px solid var(--border);
+}
+.cover-meta-cell:last-child { border-right: none; }
+.meta-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.meta-val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* Subject key */
+.subject-key {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.subject-key-cell {
+  flex: 1;
+  padding: 16px 20px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.subject-key-cell:last-child { border-right: none; }
+.subject-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.subject-key-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--ink);
+}
+.subject-key-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+.cover-bottom-band {
+  background: var(--ink);
+  padding: 20px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+.cover-bottom-left {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.cover-bottom-right {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #C9A0BC;
+}
+
+/* ── REPORT PAGES ── */
+.report-page { padding: 64px 72px; }
+
+/* ── PAGE FOOTER ── */
+.page-footer {
+  border-top: 1px solid var(--border);
+  padding: 14px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pf-left {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pf-right {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+/* ── SECTION HEADERS ── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 8px;
+}
+.section-rule-top {
+  border: none;
+  border-top: 2px solid var(--plum);
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.section-desc {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  font-style: italic;
+}
+.section-rule-bottom {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+/* ── BODY TEXT ── */
+.body-text {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 20px;
+  max-width: 680px;
+}
+.body-text strong { font-weight: 700; }
+
+/* ── EXEC BOX ── */
+.exec-box {
+  border-left: 3px solid var(--plum);
+  background: var(--plum-light);
+  padding: 28px 32px;
+  margin: 32px 0;
+}
+.exec-box-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--plum-dark);
+  margin-bottom: 12px;
+}
+.exec-box p { font-size: 15px; line-height: 1.85; color: var(--ink); }
+
+/* ── STAT ROW ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  margin: 32px 0;
+}
+.stat-cell {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell.hl-s { background: var(--rose); }
+.stat-cell.hl-h { background: var(--slate); }
+.stat-cell.hl-plum { background: var(--plum); }
+.stat-cell.hl-s .stat-num, .stat-cell.hl-s .stat-label,
+.stat-cell.hl-h .stat-num, .stat-cell.hl-h .stat-label,
+.stat-cell.hl-plum .stat-num, .stat-cell.hl-plum .stat-label { color: var(--white); }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--plum);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── CHART WRAPPER ── */
+.chart-wrap { margin: 36px 0 8px; }
+.chart-exhibit {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.chart-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+.chart-source {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── INCIDENT TIMELINE TABLE ── */
+.timeline-track { border: 1px solid var(--border); }
+.tl-header-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 90px 80px;
+  background: var(--ink);
+}
+.tl-header-row div {
+  padding: 10px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.tl-header-row div:last-child { border-right: none; }
+.tl-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 90px 80px;
+  border-bottom: 1px solid var(--border);
+  align-items: stretch;
+}
+.tl-row:last-child { border-bottom: none; }
+.tl-row.s-event { background: var(--rose-light); }
+.tl-row.h-event { background: var(--slate-light); }
+.tl-row.sh-event { background: var(--plum-light); }
+.tl-row.j-event { background: var(--sand-light); }
+.tl-row.key-event { }
+.tl-cell {
+  padding: 14px 16px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+.tl-cell:last-child { border-right: none; }
+.tl-cell span {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.tl-cell.event-text span {
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.severity-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+.severity-track {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.severity-fill { height: 100%; border-radius: 3px; }
+.severity-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  flex-shrink: 0;
+  width: 24px;
+}
+.outcome-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 2px;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.op-s { background: var(--rose-light); color: #8B3A4A; }
+.op-h { background: var(--slate-light); color: #2E5B8A; }
+.op-j { background: var(--sand-light); color: #6B5A30; }
+.op-sh { background: var(--plum-light); color: var(--plum-dark); }
+.op-neutral { background: var(--bg-alt); color: var(--muted); }
+
+/* ── AUDIT TABLE ── */
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+}
+.audit-table th {
+  background: var(--ink);
+  color: white;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+}
+.audit-table td {
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.audit-table tr:last-child td { border-bottom: none; }
+.audit-table tr.s-row td { background: var(--rose-light); }
+.audit-table tr.h-row td { background: var(--slate-light); }
+.audit-table tr.sh-row td { background: var(--plum-light); }
+.audit-table tr.j-row td { background: var(--sand-light); }
+.verdict-none {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--plum-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.verdict-ok {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── DONUT ── */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  background: var(--plum-light);
+  border: 1px solid var(--border);
+  padding: 32px;
+}
+.donut-legend { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.legend-item { display: flex; align-items: center; gap: 12px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.legend-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink); flex: 1; }
+.legend-pct { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; color: var(--ink); }
+
+/* ── HORIZONTAL BAR ── */
+.hbar-chart { display: flex; flex-direction: column; gap: 10px; }
+.hbar-row { display: flex; align-items: center; gap: 12px; }
+.hbar-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  width: 200px;
+  flex-shrink: 0;
+  text-align: right;
+  line-height: 1.4;
+}
+.hbar-track {
+  flex: 1;
+  height: 26px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.hbar-fill {
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+  position: absolute;
+  left: 0; top: 0;
+}
+.hbar-val { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); width: 48px; flex-shrink: 0; }
+
+/* ── 2x2 MATRIX ── */
+.matrix-layout { display: flex; gap: 8px; align-items: stretch; }
+.matrix-y-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  flex-shrink: 0;
+  padding: 0 8px;
+}
+.matrix-content { flex: 1; }
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.matrix-cell { background: var(--white); padding: 22px; }
+.matrix-cell.active-s { background: var(--rose); }
+.matrix-cell.active-h { background: var(--slate); }
+.matrix-cell.active-j { background: var(--sand); }
+.matrix-cell.active-s .matrix-cell-tag,
+.matrix-cell.active-s .matrix-cell-name,
+.matrix-cell.active-s .matrix-cell-verdict,
+.matrix-cell.active-s .matrix-cell-desc,
+.matrix-cell.active-h .matrix-cell-tag,
+.matrix-cell.active-h .matrix-cell-name,
+.matrix-cell.active-h .matrix-cell-verdict,
+.matrix-cell.active-h .matrix-cell-desc,
+.matrix-cell.active-j .matrix-cell-tag,
+.matrix-cell.active-j .matrix-cell-name,
+.matrix-cell.active-j .matrix-cell-verdict,
+.matrix-cell.active-j .matrix-cell-desc { color: var(--white); }
+.matrix-cell-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.matrix-cell-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.matrix-cell-verdict {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--plum);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.matrix-cell.active-s .matrix-cell-verdict,
+.matrix-cell.active-h .matrix-cell-verdict { color: rgba(255,255,255,0.85); }
+.matrix-cell-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.matrix-x-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 6px;
+  padding: 0 1px;
+}
+.matrix-x-labels span {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── ESCALATION CYCLE ── */
+.cycle-wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 24px 0;
+}
+.cycle-cell {
+  background: var(--white);
+  padding: 24px 20px;
+  position: relative;
+}
+.cycle-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--border);
+  line-height: 1;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+}
+.cycle-phase {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 8px;
+}
+.cycle-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.cycle-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.cycle-actor {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.ca-s { background: var(--rose-light); color: #8B3A4A; }
+.ca-h { background: var(--slate-light); color: #2E5B8A; }
+.ca-fans { background: var(--plum-light); color: var(--plum-dark); }
+
+/* ── SCORECARD ── */
+.scorecard-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+}
+.scorecard-table th {
+  background: var(--ink);
+  color: white;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+}
+.scorecard-table td {
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+.scorecard-table tr:last-child td { border-bottom: none; }
+.scorecard-table tr.s-row td { background: var(--rose-light); }
+.scorecard-table tr.h-row td { background: var(--slate-light); }
+.scorecard-table tr.j-row td { background: var(--sand-light); }
+.subject-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.tag-s { background: var(--rose-light); color: #8B3A4A; }
+.tag-h { background: var(--slate-light); color: #2E5B8A; }
+.tag-j { background: var(--sand-light); color: #6B5A30; }
+.rating {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.r-win { background: #E6F4EC; color: #2A6B3A; }
+.r-dominant { background: #2A6B3A; color: white; }
+.r-passive { background: var(--sand-light); color: #6B5A30; }
+.r-fumble { background: #F5EEF3; color: var(--plum-dark); }
+.r-loss { background: #FDE8E4; color: #8B2000; }
+.r-severe { background: #C0392B; color: white; }
+.r-strategic { background: var(--plum-light); color: var(--plum-dark); }
+
+/* ── CORRELATION VISUAL ── */
+.corr-wrap {
+  background: var(--plum-light);
+  border: 1px solid var(--border);
+  padding: 32px 28px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin: 24px 0;
+}
+.corr-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--plum);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.corr-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.corr-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* ── FINDINGS ── */
+.findings-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  margin: 32px 0;
+}
+.finding-cell {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+}
+.finding-cell:last-child { border-right: none; }
+.finding-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--plum);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.finding-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.finding-desc { font-size: 13px; line-height: 1.65; color: var(--ink); }
+
+/* ── VERDICT BOX ── */
+.verdict-box {
+  border: 2px solid var(--ink);
+  padding: 40px 48px;
+  margin: 32px 0;
+  position: relative;
+}
+.verdict-box::before {
+  content: 'VERDICT';
+  position: absolute;
+  top: -10px; left: 32px;
+  background: var(--white);
+  padding: 0 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--ink);
+}
+.verdict-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.verdict-item:last-child { border-bottom: none; padding-bottom: 0; }
+.verdict-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.verdict-val {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.verdict-val strong { font-weight: 700; color: var(--plum-dark); }
+
+/* ── CLOSING ── */
+.closing-line {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  line-height: 1.4;
+  text-align: center;
+  padding: 48px 0 16px;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ── BOTTOM BAR ── */
+.bottom-bar { background: var(--ink); padding: 0 24px; margin-top: 2px; }
+.bottom-bar-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.bottom-bar-text { display: flex; flex-direction: column; gap: 4px; }
+.bottom-bar-title { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--white); }
+.bottom-bar-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+.btn-download-bottom {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: #C9A0BC;
+  border: none;
+  padding: 12px 28px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.btn-download-bottom:hover { background: var(--plum); color: var(--white); }
+
+/* ── PRINT ── */
+@media print {
+  body { background: white; }
+  .site-nav, .bottom-bar { display: none; }
+  .report-wrap { margin-top: 0; padding: 0; }
+  .page { box-shadow: none; margin-bottom: 0; page-break-after: always; }
+  .page:last-child { page-break-after: avoid; }
+  .report-page { padding: 48px 64px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { margin: 0; size: A4; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .report-wrap { padding: 8px 0; }
+  .report-page { padding: 36px 24px; }
+  .cover-body { padding: 48px 28px 0; }
+  .cover-bottom-band { padding: 20px 28px; }
+  .page-footer { padding: 14px 24px; }
+  .cover-meta-grid { grid-template-columns: 1fr 1fr; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .findings-row { grid-template-columns: 1fr; }
+  .hbar-label { width: 130px; font-size: 9px; }
+  .tl-header-row, .tl-row { grid-template-columns: 60px 1fr 70px 70px; }
+  .matrix-grid { grid-template-columns: 1fr; }
+  .cycle-wrap { grid-template-columns: 1fr 1fr; }
+  .donut-wrap { flex-direction: column; }
+  .verdict-item { grid-template-columns: 1fr; gap: 4px; }
+  .cover-title-line1, .cover-title-line2 { font-size: 30px; }
+  .bottom-bar-inner { flex-direction: column; align-items: flex-start; }
+  .subject-key { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <div class="nav-logo">e-lafdas<span>™</span> by YUCK COLLECTIVE</div>
+  <div class="nav-right">
+    <span class="nav-tag">April 2026</span>
+    <a href="index.html" style="font-family:'DM Mono',monospace;font-size:11px;color:inherit;text-decoration:none;opacity:0.5;margin-left:24px;letter-spacing:0.05em;">← All Reports</a>
+  </div>
+</nav>
+
+<div class="report-wrap">
+
+<!-- ═══════════════════ COVER ═══════════════════ -->
+<div class="page cover">
+  <div class="cover-top-band">
+    <div class="cover-band-s"><span class="band-label">Subject S</span></div>
+    <div class="cover-band-j"><span class="band-label">Subject J</span></div>
+    <div class="cover-band-h"><span class="band-label">Subject H</span></div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">Intelligence Briefing · Hollywood Para-social Metrics</div>
+    <div class="cover-title">
+      <span class="cover-title-line1">The BGB</span>
+      <span class="cover-title-line2">Triangulation</span>
+    </div>
+    <div class="cover-subtitle">The Most Sustained Para-social Proxy War in Digital History, Examined</div>
+    <div class="cover-legal">(Subjects referred to as J, S, and H throughout. For legal reasons, obviously.)</div>
+
+    <hr class="cover-rule">
+
+    <div class="subject-key">
+      <div class="subject-key-cell">
+        <div class="subject-dot" style="background:var(--rose);"></div>
+        <span class="subject-key-label">Subject S</span>
+        <span class="subject-key-name">Selena Gomez</span>
+      </div>
+      <div class="subject-key-cell">
+        <div class="subject-dot" style="background:var(--sand);"></div>
+        <span class="subject-key-label">Subject J</span>
+        <span class="subject-key-name">Justin Bieber</span>
+      </div>
+      <div class="subject-key-cell">
+        <div class="subject-dot" style="background:var(--slate);"></div>
+        <span class="subject-key-label">Subject H</span>
+        <span class="subject-key-name">Hailey Baldwin Bieber</span>
+      </div>
+      <div class="subject-key-cell">
+        <div class="subject-dot" style="background:var(--plum);"></div>
+        <span class="subject-key-label">Shadow Legislature</span>
+        <span class="subject-key-name">Selenators / Rhode-Stans</span>
+      </div>
+    </div>
+
+    <div class="cover-meta-grid">
+      <div class="cover-meta-cell">
+        <div class="meta-key">Classification</div>
+        <div class="meta-val">Global Para-social Conflict / Brand Hedge Analysis</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="meta-key">Incident Window</div>
+        <div class="meta-val">2018 – Q2 2026 (ongoing)</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="meta-key">Current Phase</div>
+        <div class="meta-val">Legacy Stability Phase (post-Jack Blues Bieber)</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="meta-key">Outcome</div>
+        <div class="meta-val">Inconclusive. Selenators still in the comments.</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <div class="exec-box">
+        <div class="exec-box-label">Executive Summary</div>
+        <p>The Bieber-Gomez-Baldwin Triangulation represents the most sustained para-social proxy war in digital history. The conflict is characterised by Asymmetric Signaling — where minor digital footprints (Instagram Stories, song lyrics, eyebrow tutorials) are weaponised by fan-based Shadow Legislatures operating without the knowledge or consent of the principals. While Subjects J, S, and H have attempted multiple institutional ceasefires, the conflict remains self-sustaining due to its high engagement ROI for all three brands. <strong>As of Q2 2026, the arrival of Subject J and H's first child has shifted the conflict into a Legacy Stability Phase — though digital volatility persists, and the correlation between conflict spikes and beauty product launches is 0.82.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom-band">
+    <div class="cover-bottom-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="cover-bottom-right">A YUCK COLLECTIVE Publication</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 1 · SUBJECT PROFILES ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 01</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Subject Profiles</h2>
+    <div class="section-desc">The three principals, their brands, and their roles in the triangulation.</div>
+
+    <div class="stat-row">
+      <div class="stat-cell hl-s">
+        <div class="stat-num" style="color:white;">430M+</div>
+        <div class="stat-label">Subject S Instagram followers — most-followed woman on platform</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" style="color:var(--rose);">~10M</div>
+        <div class="stat-label">Follower gain by Subject S during Eyebrow-Gate alone</div>
+      </div>
+      <div class="stat-cell hl-h">
+        <div class="stat-num" style="color:white;">~1M</div>
+        <div class="stat-label">Followers lost by Subject H during same incident</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" style="color:var(--sand);">0</div>
+        <div class="stat-label">Direct statements issued by Subject J throughout the entire conflict</div>
+      </div>
+    </div>
+
+    <p class="body-text"><strong>Subject S (Selena Gomez).</strong> Positioned as the "Relatable Survivor" throughout the triangulation. Rare Beauty ($2B+ valuation) serves as the primary brand vehicle. Her digital positioning consistently favours vulnerability-coded content — which the Shadow Legislature interprets as receipts. Subject S has issued multiple "Be Kind" statements during escalation phases, a move that simultaneously de-escalates the conflict and consolidates moral authority. Net brand outcome: consistently positive across all incidents.</p>
+
+    <p class="body-text"><strong>Subject H (Hailey Baldwin Bieber).</strong> Positioned as the "Polished Antagonist" by the digital populace, a label she has actively and unsuccessfully attempted to retire. Rhode Skin — launched 2022, valued at $1B+ — is the primary brand vehicle. Subject H's aesthetic is aspirational and precision-coded, which the Shadow Legislature consistently interprets as deliberate provocation. PR management costs: assessed as high and continuous.</p>
+
+    <p class="body-text"><strong>Subject J (Justin Bieber).</strong> The Static Asset. His role throughout the triangulation is primarily as the object of contention. He rarely engages directly in the conflict. When he does post, it is interpreted by both fan factions as evidence for their respective positions. He is, in structural terms, the disputed territory rather than a combatant.</p>
+
+    <!-- The BGB Positioning Matrix -->
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 1</div>
+      <div class="chart-title">The BGB Positioning Matrix — Public Sympathy vs. Institutional Power at Conflict Onset (2018)</div>
+      <div class="matrix-layout">
+        <div class="matrix-y-label">Public Sympathy ↑ High</div>
+        <div class="matrix-content">
+          <div class="matrix-grid">
+            <div class="matrix-cell active-s">
+              <div class="matrix-cell-tag">High sympathy · Low institutional power</div>
+              <div class="matrix-cell-name">Subject S — Selena Gomez</div>
+              <div class="matrix-cell-verdict">✓ The Relatable Survivor</div>
+              <div class="matrix-cell-desc">Positioned as the wronged party. Vulnerability-coded content. Consistent moral high ground. Fan base: protective and vindictive in equal measure.</div>
+            </div>
+            <div class="matrix-cell">
+              <div class="matrix-cell-tag">High sympathy · High institutional power</div>
+              <div class="matrix-cell-name">Contested / Aspirational</div>
+              <div class="matrix-cell-verdict">— Unoccupied at conflict onset</div>
+              <div class="matrix-cell-desc">The position both camps claim. Neither occupies it unambiguously. The shadow legislature fights over this quadrant perpetually.</div>
+            </div>
+            <div class="matrix-cell active-j">
+              <div class="matrix-cell-tag">Low sympathy · Low institutional power</div>
+              <div class="matrix-cell-name">Subject J — Justin Bieber</div>
+              <div class="matrix-cell-verdict">— The Static Asset</div>
+              <div class="matrix-cell-desc">The disputed territory. Not a combatant. Posts occasionally. Both sides interpret each post as validation. Has never clarified this arrangement.</div>
+            </div>
+            <div class="matrix-cell active-h">
+              <div class="matrix-cell-tag">Low sympathy · High institutional power</div>
+              <div class="matrix-cell-name">Subject H — Hailey Bieber</div>
+              <div class="matrix-cell-verdict">⚠ The Polished Antagonist</div>
+              <div class="matrix-cell-desc">Marriage to Subject J confers institutional power. Aspirational brand (Rhode). Low public sympathy at conflict onset. Has spent six years attempting to migrate upward.</div>
+            </div>
+          </div>
+          <div class="matrix-x-labels">
+            <span>← Low Institutional Power</span>
+            <span>High Institutional Power →</span>
+          </div>
+        </div>
+      </div>
+      <div class="chart-source">Source: e-lafdas™ proprietary Para-social Positioning Framework™. Methodology: extremely online, occasionally parasocial ourselves.</div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">2</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 2 · INCIDENT CHRONOLOGY ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 02</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Incident Chronology</h2>
+    <div class="section-desc">Five key incidents across eight years. Severity rated 1–10. Outcomes assessed per subject.</div>
+
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 2</div>
+      <div class="chart-title">BGB Incident Timeline — 2018 to Q2 2026</div>
+      <div class="timeline-track">
+        <div class="tl-header-row">
+          <div>Date</div>
+          <div>Incident</div>
+          <div>Severity</div>
+          <div>Outcome</div>
+        </div>
+        <div class="tl-row j-event">
+          <div class="tl-cell"><span>2018</span></div>
+          <div class="tl-cell event-text"><span><strong>The Jelena Liquidation.</strong> Subject J and S announce a break in March. By July, Subject J is engaged to Subject H. Legal marriage follows in September. The speed of the transition creates the foundational "perceived grievance" on which the entire subsequent conflict is built.</span></div>
+          <div class="tl-cell">
+            <div class="severity-bar">
+              <div class="severity-track"><div class="severity-fill" style="width:100%; background:var(--rose);"></div></div>
+              <div class="severity-num">10</div>
+            </div>
+          </div>
+          <div class="tl-cell" style="flex-direction:column;align-items:flex-start;gap:4px;">
+            <span class="outcome-pill op-h">H: Perception hit</span>
+            <span class="outcome-pill op-j">J: Brand pivot</span>
+          </div>
+        </div>
+        <div class="tl-row s-event">
+          <div class="tl-cell"><span>Oct 2019</span></div>
+          <div class="tl-cell event-text"><span><strong>"Lose You To Love Me" / "I'll Kill You."</strong> Subject S releases a song referencing a two-month replacement timeline. Minutes after release, Subject H posts an Instagram Story featuring Summer Walker's "I'll Kill You." Both parties deny intentionality. Neither party convinces anyone.</span></div>
+          <div class="tl-cell">
+            <div class="severity-bar">
+              <div class="severity-track"><div class="severity-fill" style="width:80%; background:var(--rose);"></div></div>
+              <div class="severity-num">8</div>
+            </div>
+          </div>
+          <div class="tl-cell" style="flex-direction:column;align-items:flex-start;gap:4px;">
+            <span class="outcome-pill op-s">S: Cultural dominance</span>
+            <span class="outcome-pill op-h">H: Plausible deniability</span>
+          </div>
+        </div>
+        <div class="tl-row sh-event">
+          <div class="tl-cell"><span>Oct 2022</span></div>
+          <div class="tl-cell event-text"><span><strong>The Academy Museum Ceasefire (Operation: Photo-Op).</strong> Subjects S and H photographed together at the Academy Museum Gala — hugging. Released via photographer Tyrell Hampton. Media categorises it as "The End of the Feud." It is not the end of the feud.</span></div>
+          <div class="tl-cell">
+            <div class="severity-bar">
+              <div class="severity-track"><div class="severity-fill" style="width:20%; background:var(--plum);"></div></div>
+              <div class="severity-num">2</div>
+            </div>
+          </div>
+          <div class="tl-cell" style="flex-direction:column;align-items:flex-start;gap:4px;">
+            <span class="outcome-pill op-sh">Temporary stability</span>
+          </div>
+        </div>
+        <div class="tl-row h-event">
+          <div class="tl-cell"><span>Feb–Mar 2023</span></div>
+          <div class="tl-cell event-text"><span><strong>Eyebrow-Gate / TikTok Contagion.</strong> Subject S posts TikTok about over-laminated eyebrows. Kylie Jenner and Subject H post a FaceTime screenshot of their eyebrows shortly after. The internet concludes this is a coordinated mockery. Subject H loses ~1M followers. Subject S gains ~10M, becoming the most-followed woman on Instagram.</span></div>
+          <div class="tl-cell">
+            <div class="severity-bar">
+              <div class="severity-track"><div class="severity-fill" style="width:90%; background:var(--rose);"></div></div>
+              <div class="severity-num">9</div>
+            </div>
+          </div>
+          <div class="tl-cell" style="flex-direction:column;align-items:flex-start;gap:4px;">
+            <span class="outcome-pill op-s">S: Platform peak</span>
+            <span class="outcome-pill op-h">H: Mass unfollowing</span>
+          </div>
+        </div>
+        <div class="tl-row j-event">
+          <div class="tl-cell"><span>2024</span></div>
+          <div class="tl-cell event-text"><span><strong>Birth of Jack Blues Bieber.</strong> Subject J and H announce their first child. The conflict enters a Legacy Stability Phase. Subject S is at this point publicly dating Benny Blanco, creating a secondary narrative that reduces the triangulation to a quadrangulation for approximately six weeks.</span></div>
+          <div class="tl-cell">
+            <div class="severity-bar">
+              <div class="severity-track"><div class="severity-fill" style="width:10%; background:var(--sand);"></div></div>
+              <div class="severity-num">1</div>
+            </div>
+          </div>
+          <div class="tl-cell" style="flex-direction:column;align-items:flex-start;gap:4px;">
+            <span class="outcome-pill op-j">J/H: Narrative shift</span>
+          </div>
+        </div>
+      </div>
+      <div class="chart-source">Source: Billboard, Vogue, Rolling Stone, BBC News, People Magazine. Methodology: reading every celebrity news article at 1am.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">3</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 3 · ALLEGATION AUDIT ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 03</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Allegation Audit</h2>
+    <div class="section-desc">Each incident examined on its evidentiary merits. Plausible deniability assessed.</div>
+
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 3</div>
+      <div class="chart-title">Incident-by-Incident Evidentiary Review — BGB Conflict</div>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th style="width:24%">Allegation</th>
+            <th style="width:14%">Against</th>
+            <th style="width:28%">Evidence Produced</th>
+            <th style="width:34%">Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="j-row">
+            <td>Overlapping timelines / infidelity during 2018 transition</td>
+            <td>Subject J</td>
+            <td>Speed of engagement (3 months post-break). No direct evidence.</td>
+            <td><span class="verdict-none">Unverified. High circumstantial optics.</span></td>
+          </tr>
+          <tr class="h-row">
+            <td>"I'll Kill You" Story was a direct threat / response to Subject S's release</td>
+            <td>Subject H</td>
+            <td>Timestamp proximity. Subject H denied this, calling it "BS."</td>
+            <td><span class="verdict-ok">Plausible deniability maintained. Believed by approximately nobody.</span></td>
+          </tr>
+          <tr class="sh-row">
+            <td>Academy Gala photo was PR-managed de-escalation to protect Rhode brand</td>
+            <td>Subjects H + S</td>
+            <td>Timing relative to Rhode launch. Photographer selection. No direct evidence.</td>
+            <td><span class="verdict-ok">Probable. Correlation coefficient: elevated.</span></td>
+          </tr>
+          <tr class="h-row">
+            <td>Eyebrow FaceTime was coordinated mockery of Subject S</td>
+            <td>Subject H + Jenner</td>
+            <td>Timestamp proximity to Subject S's TikTok. No admission.</td>
+            <td><span class="verdict-none">Unproven. Outcome identical to proven: ~1M followers lost.</span></td>
+          </tr>
+          <tr class="s-row">
+            <td>Subject S and H have "talked privately" and resolved conflict</td>
+            <td>Subject S (claimed)</td>
+            <td>Subject S's public statement. No corroboration from Subject H.</td>
+            <td><span class="verdict-ok">Unverifiable. Conflict persists in the comments regardless.</span></td>
+          </tr>
+          <tr class="sh-row">
+            <td>Conflict spikes are timed to coincide with Rare Beauty / Rhode launches</td>
+            <td>Both brands</td>
+            <td>Correlation coefficient ~0.82 per internal analysis.</td>
+            <td><span class="verdict-none">Unconfirmed. 0.82 is a suspicious number.</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="chart-source">Source: Google, searched until page 4. e-lafdas™ Research, 2026. Note: "talked privately" is doing a lot of work in several of these rows.</div>
+    </div>
+
+    <!-- Correlation callout -->
+    <div class="corr-wrap">
+      <div class="corr-num">0.82</div>
+      <div>
+        <div class="corr-label">Exhibit A — Product Launch / Conflict Spike Correlation Coefficient</div>
+        <div class="corr-desc">The estimated correlation between BGB conflict escalation events and beauty product launches (Rare Beauty, Rhode Skin) across the incident window. Industry standard for "suspicious": 0.7+. This report makes no causal claims. The number speaks for itself.</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">4</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 4 · SENTIMENT + PLATFORM ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 04</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Sentiment & Platform Analysis</h2>
+    <div class="section-desc">Where the conflict lives, and who is winning it.</div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+
+      <!-- CHART 4: Donut - Sentiment -->
+      <div class="chart-wrap" style="margin-top:0;">
+        <div class="chart-exhibit">Exhibit 4</div>
+        <div class="chart-title">Global Sentiment Distribution — Aggregate Across All Incidents</div>
+        <div class="donut-wrap">
+          <svg width="140" height="140" viewBox="0 0 140 140" style="flex-shrink:0;">
+            <!-- S: 52%, H: 18%, Both wrong: 16%, Neutral: 9%, J: 5% -->
+            <!-- circumference r=50: 314.16 -->
+            <!-- 52%=163.4, 18%=56.5, 16%=50.3, 9%=28.3, 5%=15.7 -->
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#C17A8A"
+              stroke-width="24" stroke-dasharray="163.4 314"
+              stroke-dashoffset="0" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#7A9EB5"
+              stroke-width="24" stroke-dasharray="56.5 314"
+              stroke-dashoffset="-163.4" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#8B4F7A"
+              stroke-width="24" stroke-dasharray="50.3 314"
+              stroke-dashoffset="-219.9" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#C8C8C4"
+              stroke-width="24" stroke-dasharray="28.3 314"
+              stroke-dashoffset="-270.2" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="50" fill="none" stroke="#B5A98A"
+              stroke-width="24" stroke-dasharray="15.7 314"
+              stroke-dashoffset="-298.5" transform="rotate(-90 70 70)"/>
+            <circle cx="70" cy="70" r="37" fill="white"/>
+            <text x="70" y="66" font-family="Playfair Display, serif" font-size="18" font-weight="700" fill="#C17A8A" text-anchor="middle">52%</text>
+            <text x="70" y="80" font-family="DM Mono, monospace" font-size="7" fill="#6B6B6B" text-anchor="middle">PRO-S</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#C17A8A"></div>
+              <div class="legend-label">Pro-Subject S / Selenator-aligned</div>
+              <div class="legend-pct">52%</div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#7A9EB5"></div>
+              <div class="legend-label">Pro-Subject H / Rhode-Stan-aligned</div>
+              <div class="legend-pct">18%</div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#8B4F7A"></div>
+              <div class="legend-label">"Both sides need therapy" (ironic)</div>
+              <div class="legend-pct">16%</div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#C8C8C4"></div>
+              <div class="legend-label">Neutral / uninformed</div>
+              <div class="legend-pct">9%</div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#B5A98A"></div>
+              <div class="legend-label">Posting about Subject J specifically</div>
+              <div class="legend-pct">5%</div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-source">Source: Survey of 20 terminally online friends. Margin of error: parasocial investment varies.</div>
+      </div>
+
+      <!-- CHART 5: Platform distribution -->
+      <div class="chart-wrap" style="margin-top:0;">
+        <div class="chart-exhibit">Exhibit 5</div>
+        <div class="chart-title">Platform Distribution — Where the Conflict Primarily Plays Out</div>
+        <div class="hbar-chart">
+          <div class="hbar-row">
+            <div class="hbar-label">TikTok</div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:65%; background:var(--plum);"></div></div>
+            <div class="hbar-val">65%</div>
+          </div>
+          <div class="hbar-row">
+            <div class="hbar-label">Instagram</div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:25%; background:var(--rose);"></div></div>
+            <div class="hbar-val">25%</div>
+          </div>
+          <div class="hbar-row">
+            <div class="hbar-label">YouTube</div>
+            <div class="hbar-track"><div class="hbar-fill" style="width:10%; background:var(--slate);"></div></div>
+            <div class="hbar-val">10%</div>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;">
+          <div class="chart-exhibit">Exhibit 6</div>
+          <div class="chart-title" style="margin-bottom:16px;">Follower Movement — Eyebrow-Gate (Peak Volatility Event)</div>
+          <div class="hbar-chart">
+            <div class="hbar-row">
+              <div class="hbar-label">Subject S gained</div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:100%; background:var(--rose);"></div></div>
+              <div class="hbar-val">+10M</div>
+            </div>
+            <div class="hbar-row">
+              <div class="hbar-label">Subject H lost</div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:10%; background:var(--slate);"></div></div>
+              <div class="hbar-val">−1M</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-source">Source: Publicly reported follower counts. Platform data: e-lafdas™ Research. Note: TikTok's 65% reflects its role as the primary "investigative" forum, not where incidents originate.</div>
+      </div>
+    </div>
+
+    <p class="body-text" style="margin-top:32px;">The platform distribution is structurally significant. TikTok functions not as the site of conflict initiation but as the Shadow Legislature's deliberative chamber — where fan accounts conduct timestamp analyses, screenshot compilations, and "exposé" videos that can reach millions with no involvement from the principals. Instagram remains the primary channel for Asymmetric Signaling (Stories, posts) and Institutional Ceasefires (the Gala photo). YouTube houses the long-form "deep dive" content that frames the meta-narrative.</p>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">5</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 5 · STRUCTURAL DIAGNOSIS ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 05</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Structural Diagnosis</h2>
+    <div class="section-desc">Three frameworks for understanding why this conflict is self-sustaining.</div>
+
+    <p class="body-text"><strong>I. The Escalation Cycle.</strong> The BGB conflict does not follow a linear arc. It is cyclical, indirect, and self-replenishing. Each cycle follows a predictable four-phase structure that has repeated across all five major incidents.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 7</div>
+      <div class="chart-title">The BGB Escalation Cycle — Four-Phase Structure, Repeating</div>
+      <div class="cycle-wrap">
+        <div class="cycle-cell">
+          <div class="cycle-num">1</div>
+          <div class="cycle-phase">Phase 1</div>
+          <div class="cycle-title">The Trigger</div>
+          <div class="cycle-desc">Subject S posts vulnerability-coded content — a song, a TikTok, a candid moment. Neutral in isolation.</div>
+          <span class="cycle-actor ca-s">Actor: S</span>
+        </div>
+        <div class="cycle-cell">
+          <div class="cycle-num">2</div>
+          <div class="cycle-phase">Phase 2</div>
+          <div class="cycle-title">The Reaction</div>
+          <div class="cycle-desc">Subject H posts perfection-coded content — curated, aspirational, proximate in timestamp.</div>
+          <span class="cycle-actor ca-h">Actor: H</span>
+        </div>
+        <div class="cycle-cell">
+          <div class="cycle-num">3</div>
+          <div class="cycle-phase">Phase 3</div>
+          <div class="cycle-title">The Insurgency</div>
+          <div class="cycle-desc">The Shadow Legislature analyses timestamps, screenshots, and posts. Conclusions drawn within hours. Follower counts shift.</div>
+          <span class="cycle-actor ca-fans">Actor: Fans</span>
+        </div>
+        <div class="cycle-cell">
+          <div class="cycle-num">4</div>
+          <div class="cycle-phase">Phase 4</div>
+          <div class="cycle-title">The De-escalation</div>
+          <div class="cycle-desc">Subject S issues a "Be Kind" statement. Moral high ground consolidated. Cycle resets. Repeat from Phase 1.</div>
+          <span class="cycle-actor ca-s">Actor: S</span>
+        </div>
+      </div>
+      <div class="chart-source">Source: Pattern analysis across five major incidents, 2018–2024. e-lafdas™ Research. Methodology: one very long Reddit thread and a strong cup of chai.</div>
+    </div>
+
+    <p class="body-text" style="margin-top:24px;"><strong>II. The Underdog Symmetry.</strong> Subject S's brand is architecturally built on the "Relatable Survivor" archetype. Subject H's brand (Rhode) is architecturally aspirational. These two brand positions are in structural conflict regardless of the behaviour of either principal — meaning the Shadow Legislature's assignments of "underdog" and "antagonist" are not a misreading, but an accurate read of the brand positioning. The conflict is, in a meaningful sense, baked into the product identities.</p>
+
+    <p class="body-text"><strong>III. Plausible Deniability as a Communications Strategy.</strong> The most significant tactical innovation in the BGB conflict is the use of platform features — Stories, song lyrics, FaceTime screenshots — to communicate without direct citation. Both parties have deployed this. The "I'll Kill You" Story requires no caption. The eyebrow FaceTime requires no mention of Subject S. The Gala photo requires no statement about the conflict's resolution. Each principal can deny intent while achieving the communicative outcome. The Shadow Legislature has developed an entire interpretive apparatus to reverse-engineer this deniability. It is, structurally, an arms race between plausible deniability and fan forensics.</p>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-left">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right">6</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE 6 · DECISION AUDIT + VERDICT ═══════════════════ -->
+<div class="page">
+  <div class="report-page">
+    <div class="section-label">Section 06</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Decision Audit</h2>
+    <div class="section-desc">Key moves assessed per subject. Rated on brand outcome, not moral terms.</div>
+
+    <div class="chart-wrap">
+      <div class="chart-exhibit">Exhibit 8</div>
+      <div class="chart-title">Principal Decision Review — Moves Rated by Brand Outcome</div>
+      <table class="scorecard-table">
+        <thead>
+          <tr>
+            <th style="width:10%">Subject</th>
+            <th style="width:54%">Decision</th>
+            <th style="width:36%">Brand Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="s-row">
+            <td><span class="subject-tag tag-s">S</span></td>
+            <td>Releasing "Lose You To Love Me" with specific lyrical timeline references</td>
+            <td><span class="rating r-dominant">Dominant</span></td>
+          </tr>
+          <tr class="s-row">
+            <td><span class="subject-tag tag-s">S</span></td>
+            <td>Publicly defending Subject H against death threats ("Be Kind" statement)</td>
+            <td><span class="rating r-dominant">Dominant</span></td>
+          </tr>
+          <tr class="s-row">
+            <td><span class="subject-tag tag-s">S</span></td>
+            <td>Posting the eyebrow TikTok (the trigger, whether intentional or not)</td>
+            <td><span class="rating r-win">Net Positive</span></td>
+          </tr>
+          <tr class="h-row">
+            <td><span class="subject-tag tag-h">H</span></td>
+            <td>Posting "I'll Kill You" Story minutes after Subject S's release</td>
+            <td><span class="rating r-fumble">Strategic Fumble</span></td>
+          </tr>
+          <tr class="h-row">
+            <td><span class="subject-tag tag-h">H</span></td>
+            <td>The Eyebrow FaceTime with Kylie Jenner</td>
+            <td><span class="rating r-severe">Catastrophic</span></td>
+          </tr>
+          <tr class="h-row">
+            <td><span class="subject-tag tag-h">H</span></td>
+            <td>Academy Gala photo — the institutional ceasefire</td>
+            <td><span class="rating r-win">Stabilising</span></td>
+          </tr>
+          <tr class="h-row">
+            <td><span class="subject-tag tag-h">H</span></td>
+            <td>Rhode Skin launch and subsequent brand building despite conflict</td>
+            <td><span class="rating r-dominant">Dominant</span></td>
+          </tr>
+          <tr class="j-row">
+            <td><span class="subject-tag tag-j">J</span></td>
+            <td>Maintaining total silence throughout the conflict</td>
+            <td><span class="rating r-passive">Passive Asset</span></td>
+          </tr>
+          <tr class="j-row">
+            <td><span class="subject-tag tag-j">J</span></td>
+            <td>Having a child (Legacy Stability Phase activation)</td>
+            <td><span class="rating r-strategic">Strategic Pivot</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="chart-source">Source: Common sense, distributed unevenly. Rare Beauty and Rhode quarterly sentiment reports. e-lafdas™ Research, 2026.</div>
+    </div>
+
+    <hr class="section-rule-bottom">
+
+    <div class="section-label">Section 07</div>
+    <hr class="section-rule-top">
+    <h2 class="section-title">Verdict</h2>
+    <div class="section-desc">Findings stated clinically. Brand outcomes assessed. Conflict status confirmed.</div>
+
+    <div class="findings-row">
+      <div class="finding-cell">
+        <div class="finding-num" style="color:var(--rose);">S</div>
+        <div class="finding-label">Winning the para-social conflict</div>
+        <div class="finding-desc">Consistently higher sympathy, larger following, dominant moral positioning across all incidents. "Be Kind" is the most effective brand move in the triangulation. Rare Beauty: $2B+ valuation.</div>
+      </div>
+      <div class="finding-cell">
+        <div class="finding-num" style="color:var(--slate);">H</div>
+        <div class="finding-label">Winning the business conflict</div>
+        <div class="finding-desc">Rhode launched 2022, valued at $1B+ despite sustained negative sentiment. Proves that hate-watching converts to brand awareness at a measurable rate. Loss of followers did not translate to loss of customers.</div>
+      </div>
+      <div class="finding-cell">
+        <div class="finding-num" style="color:var(--sand);">J</div>
+        <div class="finding-label">Not participating</div>
+        <div class="finding-desc">Has issued zero public statements. Both fan factions interpret each of his posts as validation for their respective position. This is not a strategy. It may, however, be working.</div>
+      </div>
+    </div>
+
+    <div class="verdict-box">
+      <div class="verdict-item">
+        <div class="verdict-key">Para-social outcome</div>
+        <div class="verdict-val"><strong>Subject S leads comprehensively.</strong> 52% of aggregate sentiment is pro-S. She is the most-followed woman on Instagram. The "Be Kind" move is unreplicable — it simultaneously de-escalates and consolidates.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-key">Brand outcome</div>
+        <div class="verdict-val"><strong>Both S and H win.</strong> The conflict generates sustained engagement for both Rare Beauty and Rhode. The 0.82 correlation between conflict spikes and product launches is noted without further comment.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-key">Conflict status</div>
+        <div class="verdict-val"><strong>Legacy Stability Phase — not concluded.</strong> The birth of Jack Blues Bieber reduced acute volatility. Subject S's relationship with Benny Blanco introduces a secondary narrative axis. Selenators remain in the comments.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-key">Subject J's contribution</div>
+        <div class="verdict-val">Has said nothing. Is somehow still the subject of all of it.</div>
+      </div>
+    </div>
+
+    <div class="closing-line">
+      "The most consequential thing Subject J did in this conflict was remain silent. The second most consequential was having a child. In that order."
+    </div>
+    <div style="text-align:center; margin-top:16px;">
+      <span style="font-family:'DM Mono',monospace; font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">— e-lafdas™ Research, April 2026</span>
+    </div>
+
+  </div>
+  <div class="page-footer" style="background:var(--ink);">
+    <div class="pf-left" style="color:rgba(255,255,255,0.4);">e-lafdas™ · YUCK COLLECTIVE ·</div>
+    <div class="pf-right" style="color:rgba(255,255,255,0.4);">A YUCK COLLECTIVE Publication</div>
+  </div>
+</div>
+
+</div><!-- /report-wrap -->
+
+
+
+</body>
+</html>

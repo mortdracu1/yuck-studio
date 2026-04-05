@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-lafdas™ — Intelligence Briefings on Internet Drama · YUCK COLLECTIVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --ink:    #0D0D0D;
+  --white:  #FFFFFF;
+  --off:    #F4F4F2;
+  --border: #D8D8D4;
+  --border2:#EBEBEB;
+  --muted:  #7A7A74;
+  --puja:   #E07B00;
+  --iran:   #2E5B8A;
+  --bgb:    #8B4F7A;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 56px;
+}
+.nav-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.2px;
+  text-decoration: none;
+}
+.nav-logo-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-left: 14px;
+}
+.nav-right { display: flex; align-items: center; gap: 40px; }
+.nav-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.12s;
+}
+.nav-link:hover { color: var(--ink); }
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 7px 16px;
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+}
+.nav-cta:hover { background: var(--ink); color: var(--white); }
+
+/* ── HERO ── */
+.hero {
+  padding: 148px 56px 80px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.hero-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.hero-title { margin-bottom: 32px; }
+.hero-title-line1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(44px, 5.5vw, 74px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  color: var(--ink);
+  display: block;
+}
+.hero-title-line2 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(44px, 5.5vw, 74px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: var(--ink);
+  display: block;
+}
+.hero-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 460px;
+}
+.hero-right { padding-bottom: 4px; }
+.hero-stat-block {
+  border-top: 1px solid var(--border);
+  padding: 18px 0;
+}
+.hero-stat-block:last-child { border-bottom: 1px solid var(--border); }
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+.hero-stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── ABOUT ── */
+.about-strip { border-bottom: 1px solid var(--border); }
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr;
+  align-items: stretch;
+}
+.about-cell {
+  padding: 48px 48px;
+  border-right: 1px solid var(--border);
+}
+.about-cell:last-child { border-right: none; }
+.about-cell-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+  display: block;
+}
+.about-cell-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.about-cell-body {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.78;
+}
+.about-cell-body strong { color: var(--ink); font-weight: 500; }
+
+/* ── SCREENTIME ── */
+.screentime-section { border-bottom: 1px solid var(--border); }
+.screentime-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 56px 0;
+}
+.section-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border2);
+  margin-bottom: 0;
+}
+.section-header-left { display: flex; flex-direction: column; gap: 6px; }
+.section-header-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.section-header-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.section-header-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.sc-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 68px 72px;
+  align-items: center;
+  border-bottom: 1px solid var(--border2);
+  padding: 20px 0;
+  gap: 28px;
+}
+.sc-platform {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.sc-bar-track {
+  height: 3px;
+  background: var(--border2);
+  position: relative;
+  overflow: hidden;
+}
+.sc-bar-fill {
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  background: var(--ink);
+}
+.sc-hours {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  text-align: right;
+}
+.sc-unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.screentime-source {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  font-style: italic;
+  padding: 14px 0 48px;
+}
+
+/* ── REPORTS ── */
+.reports-section { border-bottom: 1px solid var(--border); }
+.reports-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 56px 0;
+}
+.reports-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border2);
+  margin-bottom: 0;
+}
+
+.report-row {
+  display: grid;
+  grid-template-columns: 20px 1fr 140px;
+  gap: 40px;
+  align-items: start;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border2);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+}
+.report-row:last-child {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+.report-row:hover .rr-title-line1,
+.report-row:hover .rr-title-line2 { opacity: 0.55; }
+.report-row:hover .rr-open { color: var(--ink); }
+
+.rr-accent {
+  width: 3px;
+  align-self: stretch;
+  margin-top: 6px;
+}
+.rr-accent.puja { background: var(--puja); }
+.rr-accent.iran  { background: var(--iran); }
+.rr-accent.bgb   { background: var(--bgb); }
+
+.rr-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.rr-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.rr-status {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rr-dot { width: 5px; height: 5px; border-radius: 50%; background: #4A7C59; }
+
+.rr-title { margin-bottom: 12px; }
+.rr-title-line1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  display: block;
+  line-height: 1;
+  transition: opacity 0.12s;
+}
+.rr-title-line2 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--ink);
+  display: block;
+  line-height: 1.06;
+  transition: opacity 0.12s;
+}
+.rr-summary {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.78;
+  max-width: 600px;
+  margin-bottom: 24px;
+  letter-spacing: 0.1px;
+}
+.rr-meta { display: flex; gap: 0; flex-wrap: wrap; }
+.rr-meta-item {
+  padding-right: 24px;
+  margin-right: 24px;
+  border-right: 1px solid var(--border2);
+  margin-bottom: 8px;
+}
+.rr-meta-item:last-child { border-right: none; margin-right: 0; }
+.rr-meta-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 3px;
+}
+.rr-meta-val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  display: block;
+}
+
+.rr-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  align-self: stretch;
+  padding-top: 6px;
+  gap: 12px;
+}
+.rr-id {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rr-open {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.12s;
+  margin-top: auto;
+  white-space: nowrap;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 28px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-left {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.footer-right { display: flex; align-items: center; gap: 32px; }
+.footer-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.12s;
+}
+.footer-link:hover { color: var(--ink); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-logo-sub { display: none; }
+  .nav-right { gap: 20px; }
+  .hero { padding: 110px 24px 64px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero-right { display: grid; grid-template-columns: 1fr 1fr; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-cell { padding: 36px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+  .about-cell:last-child { border-bottom: none; }
+  .screentime-inner, .reports-inner { padding: 40px 24px 0; }
+  .sc-row { grid-template-columns: 140px 1fr 56px; }
+  .sc-unit { display: none; }
+  .report-row { grid-template-columns: 14px 1fr; gap: 20px; }
+  .rr-right { display: none; }
+  footer { padding: 24px; flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    e-lafdas™<span class="nav-logo-sub">by YUCK COLLECTIVE</span>
+  </a>
+  <div class="nav-right">
+    <a href="https://yuck.studio" target="_blank" class="nav-cta">yuck.studio ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-label">Intelligence Briefings · April 2026</div>
+      <div class="hero-title">
+        <span class="hero-title-line1">Intelligence briefings</span>
+        <span class="hero-title-line2">on internet drama.</span>
+      </div>
+      <p class="hero-sub">Rigorous analysis. On subjects that do not deserve this level of scrutiny.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTRUCT -->
+<section class="about-strip">
+  <div class="about-inner" style="grid-template-columns: 220px 1fr;">
+    <div class="about-cell">
+      <span class="about-cell-label">The Construct</span>
+    </div>
+    <div class="about-cell" style="border-right:none;">
+      <div class="about-cell-body">
+        <strong>e-lafdas™</strong> applies the full apparatus of management consulting — executive summaries, exhibit numbers, 2×2 matrices, allegation audits, and clinical prose — to internet drama that does not deserve it.<br><br>
+        Every report covers a genuine conflict, examines the evidence on its merits, and reaches a verdict. The format is straight-faced. The content is not.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENTIME -->
+<section class="screentime-section">
+  <div class="screentime-inner">
+    <div class="section-header">
+      <div class="section-header-left">
+        <span class="section-header-label">Research Infrastructure</span>
+        <span class="section-header-title">Editorial Team Screentime — Weekly Average</span>
+      </div>
+    </div>
+
+    <div class="sc-row">
+      <div class="sc-platform">r/InstaCelebsGossip</div>
+      <div class="sc-bar-track"><div class="sc-bar-fill" style="width:88%;"></div></div>
+      <div class="sc-hours">14.2h</div>
+      <div class="sc-unit">/ week</div>
+    </div>
+    <div class="sc-row">
+      <div class="sc-platform">X (Twitter)</div>
+      <div class="sc-bar-track"><div class="sc-bar-fill" style="width:72%;"></div></div>
+      <div class="sc-hours">11.6h</div>
+      <div class="sc-unit">/ week</div>
+    </div>
+    <div class="sc-row">
+      <div class="sc-platform">Instagram</div>
+      <div class="sc-bar-track"><div class="sc-bar-fill" style="width:56%;"></div></div>
+      <div class="sc-hours">9.1h</div>
+      <div class="sc-unit">/ week</div>
+    </div>
+    <div class="sc-row">
+      <div class="sc-platform">Google Search</div>
+      <div class="sc-bar-track"><div class="sc-bar-fill" style="width:28%;"></div></div>
+      <div class="sc-hours">4.5h</div>
+      <div class="sc-unit">/ week</div>
+    </div>
+
+    <div class="screentime-source">
+      Note: Google Search hours represent time spent past page 3. This is considered advanced research.
+    </div>
+  </div>
+</section>
+
+<!-- REPORTS -->
+<section class="reports-section" id="reports">
+  <div class="reports-inner">
+    <div class="reports-header">
+      <div class="section-header-left">
+        <span class="section-header-label">Case Files</span>
+        <span class="section-header-title">Published Intelligence Briefings</span>
+      </div>
+    </div>
+
+    <!-- Puja -->
+    <a class="report-row" href="elafdas-v2.html">
+      <div class="rr-accent puja"></div>
+      <div>
+        <div class="rr-top">
+          <span class="rr-tag">Desi Creator Economy</span>
+          <span class="rr-status"><span class="rr-dot"></span>Published · April 2026</span>
+        </div>
+        <div class="rr-title">
+          <span class="rr-title-line1">LifeofPujaa vs.</span>
+          <span class="rr-title-line2">The Establishment</span>
+        </div>
+        <p class="rr-summary">A village homemaker from West Bengal builds 673K followers through unfiltered feminist commentary. The urban creator establishment questions her credibility. Zero evidence is produced. The attack backfires comprehensively. The Times of India does not cover the aggressor.</p>
+        <div class="rr-meta">
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Subject</span>
+            <span class="rr-meta-val">@lifeofpujaa</span>
+          </div>
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Window</span>
+            <span class="rr-meta-val">9 days · Apr 2026</span>
+          </div>
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Receipts</span>
+            <span class="rr-meta-val">0</span>
+          </div>
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Outcome</span>
+            <span class="rr-meta-val">Subject wins</span>
+          </div>
+        </div>
+      </div>
+      <div class="rr-right">
+        <span class="rr-id">EL-2026-001</span>
+        <span class="rr-open">Open Report →</span>
+      </div>
+    </a>
+
+    <!-- Iran -->
+    <a class="report-row" href="elafdas-iran.html">
+      <div class="rr-accent iran"></div>
+      <div>
+        <div class="rr-top">
+          <span class="rr-tag">Geopolitical PR</span>
+          <span class="rr-status"><span class="rr-dot"></span>Published · April 2026</span>
+        </div>
+        <div class="rr-title">
+          <span class="rr-title-line1">Iran vs.</span>
+          <span class="rr-title-line2">The World</span>
+        </div>
+        <p class="rr-summary">The United States names a military operation "Epic Fury." Iran renames it "Epic Fear." A pomegranate juice reel goes viral and is deleted. The internet unearths a decade-old tweet in which the Supreme Leader describes himself as "naughty and playful." Narrative control: 5/10 each.</p>
+        <div class="rr-meta">
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Subject</span>
+            <span class="rr-meta-val">Iran State PR</span>
+          </div>
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Window</span>
+            <span class="rr-meta-val">7 days · Apr 2026</span>
+          </div>
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Narrative Control</span>
+            <span class="rr-meta-val">5/10 each</span>
+          </div>
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Outcome</span>
+            <span class="rr-meta-val">Both sides posting</span>
+          </div>
+        </div>
+      </div>
+      <div class="rr-right">
+        <span class="rr-id">EL-2026-002</span>
+        <span class="rr-open">Open Report →</span>
+      </div>
+    </a>
+
+    <!-- BGB -->
+    <a class="report-row" href="elafdas-bgb.html">
+      <div class="rr-accent bgb"></div>
+      <div>
+        <div class="rr-top">
+          <span class="rr-tag">Hollywood Para-social</span>
+          <span class="rr-status"><span class="rr-dot"></span>Published · April 2026</span>
+        </div>
+        <div class="rr-title">
+          <span class="rr-title-line1">The BGB</span>
+          <span class="rr-title-line2">Triangulation</span>
+        </div>
+        <p class="rr-summary">Eight years of asymmetric signalling between Selena Gomez, Justin Bieber, and Hailey Baldwin. Fan-operated shadow legislatures. Eyebrow-related diplomatic incidents. Correlation between conflict spikes and beauty product launches: 0.82. Subject J has issued zero public statements throughout.</p>
+        <div class="rr-meta">
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Subjects</span>
+            <span class="rr-meta-val">S, J, and H</span>
+          </div>
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Window</span>
+            <span class="rr-meta-val">2018 – Q2 2026</span>
+          </div>
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">J's Statements</span>
+            <span class="rr-meta-val">0</span>
+          </div>
+          <div class="rr-meta-item">
+            <span class="rr-meta-key">Phase</span>
+            <span class="rr-meta-val">Legacy Stability</span>
+          </div>
+        </div>
+      </div>
+      <div class="rr-right">
+        <span class="rr-id">EL-2026-003</span>
+        <span class="rr-open">Open Report →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-left">© 2026 e-lafdas™ · YUCK COLLECTIVE</span>
+</footer>
+
+</body>
+</html>
