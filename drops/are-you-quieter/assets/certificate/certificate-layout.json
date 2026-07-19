@@ -1,0 +1,108 @@
+{
+  "background": "certificate-background-v3.png",
+  "coordinateSystem": {
+    "type": "normalized-percent",
+    "width": 100,
+    "height": 100
+  },
+  "rendering": {
+    "imageRendering": "pixelated",
+    "fontSuggestion": "Courier New Bold or another blocky DOS bitmap font"
+  },
+  "fields": [
+    {
+      "id": "title",
+      "copy": "CERTIFICATE OF ACCOUNTABILITY AVOIDED",
+      "box": {
+        "x": 18,
+        "y": 6,
+        "w": 78,
+        "h": 16
+      }
+    },
+    {
+      "id": "time",
+      "prefix": "I REMAINED SILENT FOR",
+      "value": "[TIME]",
+      "suffix": ".",
+      "box": {
+        "x": 7,
+        "y": 30,
+        "w": 86,
+        "h": 14
+      }
+    },
+    {
+      "id": "comparison",
+      "prefix": "THAT IS ONLY",
+      "value": "[PERCENTAGE]%",
+      "suffix": "OF THE EDUCATION MINISTER'S RECORD.",
+      "box": {
+        "x": 7,
+        "y": 46,
+        "w": 86,
+        "h": 17
+      }
+    },
+    {
+      "id": "outcomeStamp",
+      "files": {
+        "reaction": "stamps/poker-face-broken.png",
+        "paperwork": "stamps/defeated-by-paperwork.png",
+        "resigned": "stamps/voluntarily-resigned.png"
+      },
+      "box": {
+        "x": 54,
+        "y": 67,
+        "w": 42,
+        "h": 12
+      }
+    },
+    {
+      "id": "challengeFooter",
+      "copy": "ARE YOU QUIETER THAN A MINISTER?",
+      "box": {
+        "x": 5,
+        "y": 81,
+        "w": 90,
+        "h": 3
+      }
+    },
+    {
+      "id": "supportMessage",
+      "copy": "GO SHOW SUPPORT\u2014IN WHATEVER WAY YOU CAN\u2014TO STUDENTS AFFECTED BY PAPER LEAKS.",
+      "box": {
+        "x": 5,
+        "y": 84,
+        "w": 90,
+        "h": 5
+      }
+    },
+    {
+      "id": "shareButton",
+      "copy": "SHARE THE CHALLENGE",
+      "box": {
+        "x": 9,
+        "y": 91,
+        "w": 32,
+        "h": 7
+      }
+    },
+    {
+      "id": "replayButton",
+      "copy": "RETURN TO OFFICE",
+      "box": {
+        "x": 47,
+        "y": 91,
+        "w": 45,
+        "h": 7
+      }
+    }
+  ],
+  "rules": [
+    "The preview uses a sample time and a percentage placeholder only; production must populate both live.",
+    "Show exactly one outcome stamp.",
+    "Keep the support message visible on the certificate and in the shared image.",
+    "Do not flatten live text into the background asset."
+  ]
+}

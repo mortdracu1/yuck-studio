@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "status": "approved-copy",
+  "ordering": "fixed",
+  "interventionWindowSeconds": 180,
+  "defaults": {
+    "sound": "../audio/final/sfx_phone_buzz.mp3",
+    "displayDurationMs": 5000,
+    "dismissible": false,
+    "requiresInteraction": false
+  },
+  "notifications": [
+    {
+      "id": "phone_01",
+      "timeSeconds": 18,
+      "type": "message",
+      "sender": "RECEPTION",
+      "copy": "Sir, more complaint letters coming in. I already told them you're at a vipassana.",
+      "displayDurationMs": 6000
+    },
+    {
+      "id": "phone_02",
+      "timeSeconds": 34,
+      "type": "message",
+      "sender": "PR CELL",
+      "copy": "Statement ready sir: “Muh mein le i'm not talking\". Good to go?",
+      "displayDurationMs": 6000
+    },
+    {
+      "id": "phone_03",
+      "timeSeconds": 50,
+      "type": "message",
+      "sender": "EXAM CELL",
+      "copy": "Sir paper leaked again lol. Give me the Rs.10000 you bet hehehe.",
+      "displayDurationMs": 6000
+    },
+    {
+      "id": "phone_04",
+      "timeSeconds": 65,
+      "type": "calendar",
+      "sender": "CALENDAR",
+      "copy": "ACCOUNTABILITY REVIEW: CANCELLED",
+      "displayDurationMs": 4500
+    },
+    {
+      "id": "phone_05",
+      "timeSeconds": 80,
+      "type": "message",
+      "sender": "OFFICE GROUP",
+      "copy": "Party tonight na? Speaking of Sonam i'm getting hungry, order some and keep please.",
+      "displayDurationMs": 6500
+    },
+    {
+      "id": "phone_06",
+      "timeSeconds": 95,
+      "type": "message",
+      "sender": "STUDENT COUNCIL",
+      "copy": "Sir student council here. Please stop ghosting us.",
+      "displayDurationMs": 5000
+    },
+    {
+      "id": "phone_07",
+      "timeSeconds": 109,
+      "type": "confirmation",
+      "sender": "TICKETS",
+      "copy": "Tickets for \"The Odyssey\" confirmed.",
+      "displayDurationMs": 4500
+    },
+    {
+      "id": "phone_08",
+      "timeSeconds": 122,
+      "type": "message",
+      "sender": "UNKNOWN",
+      "copy": "Sir the jerk store called. They're running out of you.",
+      "displayDurationMs": 5000
+    },
+    {
+      "id": "phone_10",
+      "timeSeconds": 148,
+      "type": "message",
+      "sender": "CONSCIENCE",
+      "copy": "Bro, I think you should say something at this point.",
+      "displayDurationMs": 5500,
+      "sound": null
+    },
+    {
+      "id": "phone_12",
+      "timeSeconds": 172,
+      "type": "message",
+      "sender": "PR CELL",
+      "copy": "Sir some new controversy is popping. So things should cool down for you.",
+      "displayDurationMs": 6000
+    }
+  ],
+  "implementationRules": [
+    "Render this copy verbatim. Do not silently correct grammar, spelling, capitalization or punctuation.",
+    "The missing IDs phone_09 and phone_11 are intentionally retired and must not be regenerated.",
+    "Notifications draw attention but never require a click and never pause complaint shredding.",
+    "Wrap long messages to a maximum of three short lines on the phone screen.",
+    "Use the shared restrained phone buzz except where sound is explicitly null.",
+    "Treat phone playback as game-owned audio for microphone echo protection."
+  ]
+}

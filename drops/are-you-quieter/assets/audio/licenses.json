@@ -1,0 +1,69 @@
+{
+  "licensePolicy": "All sourced files in this pack were published under Creative Commons CC0. Source attribution is retained for provenance.",
+  "sources": [
+    {
+      "finalFile": "final/amb_office_loop.mp3",
+      "title": "Empty Office Space Room Tone with Aircon SFX",
+      "creator": "Soup_UnderScore",
+      "source": "https://freesound.org/people/Soup_UnderScore/sounds/708021/",
+      "license": "CC0",
+      "processing": "60-second excerpt, filtered, normalized conservatively, converted to 48 kHz stereo MP3"
+    },
+    {
+      "finalFile": "final/sfx_paper_rustle.mp3",
+      "title": "paper rustling.wav",
+      "creator": "12beesinatrenchcoat",
+      "source": "https://freesound.org/people/12beesinatrenchcoat/sounds/653953/",
+      "license": "CC0",
+      "processing": "normalized conservatively, converted to 48 kHz mono MP3"
+    },
+    {
+      "finalFile": "final/sfx_shredder.mp3",
+      "title": "Paper shredder",
+      "creator": "giddster",
+      "source": "https://freesound.org/people/giddster/sounds/360488/",
+      "license": "CC0",
+      "processing": "5.5-second excerpt with short fade, normalized conservatively, converted to 48 kHz mono MP3"
+    },
+    {
+      "finalFile": "final/sfx_phone_buzz.mp3",
+      "title": "phone short buzz",
+      "creator": "richwise",
+      "source": "https://freesound.org/people/richwise/sounds/476836/",
+      "license": "CC0",
+      "processing": "normalized conservatively, converted to 48 kHz mono MP3"
+    },
+    {
+      "finalFile": "final/sfx_door_open_close.mp3",
+      "title": "Door (Opening and Closing)",
+      "creator": "Breviceps",
+      "source": "https://freesound.org/people/Breviceps/sounds/457042/",
+      "license": "CC0",
+      "processing": "normalized conservatively, converted to 48 kHz mono MP3"
+    },
+    {
+      "finalFile": "final/sfx_accountability_stamp.mp3",
+      "title": "traditional stamp.wav",
+      "creator": "I.fekry",
+      "source": "https://freesound.org/people/I.fekry/sounds/470710/",
+      "license": "CC0",
+      "processing": "normalized conservatively, converted to 48 kHz mono MP3"
+    },
+    {
+      "finalFile": "final/sfx_reaction_fail.mp3",
+      "title": "Wrong Buzzer",
+      "creator": "KevinVG207",
+      "source": "https://freesound.org/people/KevinVG207/sounds/331912/",
+      "license": "CC0",
+      "processing": "normalized conservatively, converted to 48 kHz mono MP3"
+    },
+    {
+      "finalFile": "final/sfx_cockroach_jump_sting.mp3",
+      "title": "Shock (Horror Version)",
+      "creator": "Beetlemuse",
+      "source": "https://freesound.org/people/Beetlemuse/sounds/563999/",
+      "license": "CC0",
+      "processing": "2.2-second excerpt, faded and peak-limited conservatively, converted to 48 kHz stereo MP3"
+    }
+  ]
+}

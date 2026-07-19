@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "status": "creator-recorded-final",
+  "format": {
+    "container": "MP3",
+    "sampleRateHz": 48000,
+    "channels": 1,
+    "targetIntegratedLoudnessLUFS": -18,
+    "truePeakLimitDbTP": -3
+  },
+  "dialogue": [
+    {
+      "characterId": "office_attendant",
+      "characterAsset": "../../characters/final/office-attendant.png",
+      "file": "final/door_office_attendant_01.mp3",
+      "usage": ["doorway"]
+    },
+    {
+      "characterId": "senior_bureaucrat",
+      "characterAsset": "../../characters/final/senior-bureaucrat.png",
+      "file": "final/door_senior_bureaucrat_01.mp3",
+      "usage": ["doorway"]
+    },
+    {
+      "characterId": "fellow_minister",
+      "characterAsset": "../../characters/final/fellow-minister.png",
+      "file": "final/door_fellow_minister_01.mp3",
+      "usage": ["doorway"]
+    },
+    {
+      "characterId": "police_officer",
+      "characterAsset": "../../characters/final/police-officer.png",
+      "file": "final/door_police_officer_01.mp3",
+      "usage": ["doorway"]
+    },
+    {
+      "characterId": "ghostly_dictator",
+      "characterAsset": "../../characters/final/ghostly-dictator.png",
+      "file": "final/door_ghostly_dictator_01.mp3",
+      "usage": ["doorway"]
+    },
+    {
+      "characterId": "neet_exam_paper",
+      "characterAsset": "../../characters/final/neet-exam-paper.png",
+      "file": "final/door_neet_exam_paper_01.mp3",
+      "usage": ["doorway"]
+    },
+    {
+      "characterId": "prime_minister_caricature",
+      "characterAsset": "../../characters/final/prime-minister-caricature.png",
+      "file": "final/door_prime_minister_caricature_01.mp3",
+      "usage": ["doorway"]
+    },
+    {
+      "characterId": "minister_conscience",
+      "characterAsset": "../../characters/final/minister-conscience.png",
+      "file": "final/door_minister_conscience_01.mp3",
+      "usage": ["doorway"]
+    },
+    {
+      "characterId": "anthropomorphic_cockroach",
+      "characterAsset": "../../characters/final/anthropomorphic-cockroach.png",
+      "file": "final/door_anthropomorphic_cockroach_01.mp3",
+      "usage": ["doorway"],
+      "jumpScareAudio": "../../audio/final/sfx_cockroach_jump_sting.mp3"
+    }
+  ],
+  "implementationRules": [
+    "Play each recording with the matching doorway character asset.",
+    "Do not play two doorway recordings simultaneously.",
+    "Treat every recording as game-owned audio for microphone echo protection.",
+    "Apply the short output-transient guard described in the root handoff notes, but do not disable reaction detection for the full recording.",
+    "Use the cockroach dialogue recording only for its doorway appearance. Use the separate restrained jump sting for the camera-filling scare.",
+    "Do not imitate, clone or synthesize replacement voices for these recordings."
+  ]
+}
