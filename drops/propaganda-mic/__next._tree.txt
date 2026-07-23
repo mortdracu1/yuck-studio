@@ -1,0 +1,6 @@
+:HL["/drops/propaganda-mic/_next/static/css/6ae81c4f227c70d3.css","style"]
+:HL["/drops/propaganda-mic/illustrations/microphone-logo-transparent.png","image"]
+:HL["/drops/propaganda-mic/illustrations/processor-transparent.png","image"]
+:HL["/drops/propaganda-mic/illustrations/filtration-transparent.png","image"]
+:HL["/drops/propaganda-mic/illustrations/human-transparent.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"-YZMDzAbKHosZuBPGaFBL"}
