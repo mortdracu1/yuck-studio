@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SadakValley — YUCK</title>
+<meta name="description" content="Your X feed, turned into an Indian street. Familiar faces. Unsolicited advice. Welcome to SadakValley.">
+<link rel="canonical" href="https://yuck.studio/drops/sadakvalley/">
+<meta property="og:title" content="SadakValley — Welcome to the neighbourhood.">
+<meta property="og:description" content="Your X feed, turned into an Indian street. Drag to explore. Click a poster to read.">
+<meta property="og:url" content="https://yuck.studio/drops/sadakvalley/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#668a93">
+<link rel="preconnect" href="https://bangalore-wall.mortdracu.chatgpt.site">
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#668a93}iframe{position:fixed;inset:0;width:100%;height:100%;height:100dvh;border:0;display:block}noscript{font:18px sans-serif;color:white;padding:24px;display:block}a{color:inherit}</style>
+</head>
+<body>
+<iframe id="street" title="SadakValley interactive street" src="https://bangalore-wall.mortdracu.chatgpt.site/" allow="autoplay; fullscreen; clipboard-write; web-share" allowfullscreen></iframe>
+<noscript>Enable JavaScript to explore <a href="https://bangalore-wall.mortdracu.chatgpt.site/">SadakValley</a>.</noscript>
+<script>
+// Keep the drop on YUCK while the live application remains independently updatable.
+const query = new URLSearchParams(location.search);
+const poster = query.get('poster');
+if (poster && /^[a-z0-9-]+$/.test(poster)) {
+ document.getElementById('street').src = 'https://bangalore-wall.mortdracu.chatgpt.site/poster/' + encodeURIComponent(poster);
+}
+</script>
+</body>
+</html>
