@@ -18,12 +18,27 @@
 <iframe id="street" title="SadakValley interactive street" src="https://bangalore-wall.mortdracu.chatgpt.site/" allow="autoplay; fullscreen; clipboard-write; web-share" allowfullscreen></iframe>
 <noscript>Enable JavaScript to explore <a href="https://bangalore-wall.mortdracu.chatgpt.site/">SadakValley</a>.</noscript>
 <script>
-// Keep the drop on YUCK while the live application remains independently updatable.
-const query = new URLSearchParams(location.search);
-const poster = query.get('poster');
-if (poster && /^[a-z0-9-]+$/.test(poster)) {
- document.getElementById('street').src = 'https://bangalore-wall.mortdracu.chatgpt.site/poster/' + encodeURIComponent(poster);
-}
+const street = document.getElementById('street');
+const appOrigin = 'https://bangalore-wall.mortdracu.chatgpt.site';
+const validId = id => typeof id === 'string' && /^[a-z0-9-]+$/.test(id);
+const currentPoster = () => {
+ const id = new URLSearchParams(location.search).get('poster');
+ return validId(id) ? id : null;
+};
+const initial = currentPoster();
+if (initial) street.src = appOrigin + '/poster/' + encodeURIComponent(initial);
+window.addEventListener('message', event => {
+ if (event.origin !== appOrigin || event.source !== street.contentWindow || event.data?.type !== 'sadak:poster') return;
+ const id = event.data.posterId;
+ if (id !== null && !validId(id)) return;
+ if (currentPoster() === id) return;
+ const url = new URL(location.href);
+ if (id) url.searchParams.set('poster', id); else url.searchParams.delete('poster');
+ history.pushState({}, '', url);
+});
+window.addEventListener('popstate', () => {
+ street.contentWindow.postMessage({type:'sadak:navigate',posterId:currentPoster()},appOrigin);
+});
 </script>
 </body>
 </html>
