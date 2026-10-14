@@ -30,7 +30,9 @@ export const properties = [
       "airport",
       "breakfast",
       "frontdesk",
-      "meals"
+      "meals",
+      "wake",
+      "express"
     ],
     "nudge": {
       "text": "Someone on your flight just got this room.",
@@ -43,6 +45,22 @@ export const properties = [
         "group": "Facilities",
         "label": "event",
         "source": "S1"
+      },
+      {
+        "text": "Surprise wake-up calls",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "wake",
+        "addedInRefresh": true
+      },
+      {
+        "text": "Express check-in. No questions accepted.",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "express",
+        "addedInRefresh": true
       },
       {
         "text": "Escorted arrival",
@@ -71,17 +89,33 @@ export const properties = [
       {
         "text": "Hadn't even switched off airplane mode.",
         "guest": "Solo traveller · unplanned",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Ananya",
+        "avatarSeed": 0,
+        "attachmentIndexes": [
+          1
+        ],
+        "title": "Pickup was extremely efficient."
       },
       {
         "text": "Didn't book. Got picked up anyway. 10/10 initiative from staff.",
         "guest": "Group stay · arranged",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Kabir",
+        "avatarSeed": 1,
+        "attachmentIndexes": [],
+        "title": "Everything handled for me."
       },
       {
         "text": "Staff were waiting at the gate with my name. I never gave them my name.",
         "guest": "City break · extended",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Meera",
+        "avatarSeed": 2,
+        "attachmentIndexes": [
+          2
+        ],
+        "title": "An arrival to remember."
       }
     ],
     "images": [
@@ -89,13 +123,27 @@ export const properties = [
         "src": "./assets/arrival-suite-hero.png",
         "alt": "A warm cream-and-green cell with a neatly made bed and barred entrance.",
         "label": "Room overview",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
+      },
+      {
+        "src": "./assets/jails/cellular-door.jpg",
+        "kind": "jail",
+        "label": "Cell interior",
+        "alt": "A historic prison cell interior at Lincoln Castle.",
+        "caption": "Lincoln Castle prison, England",
+        "credit": "Peter Turner",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_cell_interior,_Lincoln_Castle_prison_-_geograph.org.uk_-_5096925.jpg",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "changes": "Resized for display; card framing may crop the image."
       },
       {
         "src": "./assets/arrival-suite-detail.png",
         "alt": "Close-up of the folded blanket and bedside amenities in the Arrival Suite.",
         "label": "A closer look",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
       },
       {
         "src": "./assets/editorial/delhi-october-detentions.webp",
@@ -133,7 +181,10 @@ export const properties = [
       "shared",
       "breakfast",
       "frontdesk",
-      "meals"
+      "meals",
+      "smell",
+      "snoring",
+      "bathroom"
     ],
     "nudge": {
       "text": "14 people from your WhatsApp group are already here.",
@@ -146,6 +197,30 @@ export const properties = [
         "group": "Facilities",
         "label": "event",
         "source": "S2"
+      },
+      {
+        "text": "Overpowering pee smell, included",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "smell",
+        "addedInRefresh": true
+      },
+      {
+        "text": "Complimentary communal snoring",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "snoring",
+        "addedInRefresh": true
+      },
+      {
+        "text": "Communal bathrooms",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "bathroom",
+        "addedInRefresh": true
       },
       {
         "text": "Shared accommodation",
@@ -174,31 +249,59 @@ export const properties = [
       {
         "text": "Came with friends. Left with friends. Eventually.",
         "guest": "Solo traveller · unplanned",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Rohan",
+        "avatarSeed": 3,
+        "attachmentIndexes": [
+          0
+        ],
+        "title": "A proper group experience."
       },
       {
         "text": "Great for networking. Everyone had read the same thread.",
         "guest": "Group stay · arranged",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Sana",
+        "avatarSeed": 4,
+        "attachmentIndexes": [],
+        "title": "Made friends immediately."
       },
       {
         "text": "Bus was free and very punctual. It arrived before the speeches ended.",
         "guest": "City break · extended",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Dev",
+        "avatarSeed": 5,
+        "attachmentIndexes": [],
+        "title": "The transfer was included."
       }
     ],
     "images": [
       {
+        "src": "./assets/jails/cell-block.jpg",
+        "kind": "jail",
+        "label": "Cell interior",
+        "alt": "Two tiers of weathered barred cells and a central corridor.",
+        "caption": "Prison cell block; location unspecified by photographer",
+        "credit": "Bob Jagendorf",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prison_cell_block.jpg",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "changes": "Resized for display; card framing may crop the image."
+      },
+      {
         "src": "./assets/jantar-social-hero.png",
         "alt": "A sunlit shared cell with rolled durries, metal cups and a wide barred entrance.",
         "label": "Room overview",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
       },
       {
         "src": "./assets/jantar-social-detail.png",
         "alt": "Close-up of rolled bedding and tea cups in the Jantar Social.",
         "label": "A closer look",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
       },
       {
         "src": "./assets/editorial/delhi-october-detentions.webp",
@@ -236,7 +339,10 @@ export const properties = [
       "digital",
       "breakfast",
       "frontdesk",
-      "meals"
+      "meals",
+      "sockets",
+      "wall",
+      "lighting"
     ],
     "nudge": {
       "text": "Your last post made you eligible for this room.",
@@ -249,6 +355,30 @@ export const properties = [
         "group": "Facilities",
         "label": "event",
         "source": "S1"
+      },
+      {
+        "text": "Zero charging points",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "sockets",
+        "addedInRefresh": true
+      },
+      {
+        "text": "24-hour wall-facing entertainment",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "wall",
+        "addedInRefresh": true
+      },
+      {
+        "text": "24-hour lighting",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "lighting",
+        "addedInRefresh": true
       },
       {
         "text": "Device storage at reception",
@@ -277,31 +407,61 @@ export const properties = [
       {
         "text": "Finally off my phone. Not my choice, but still.",
         "guest": "Solo traveller · unplanned",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Tara",
+        "avatarSeed": 6,
+        "attachmentIndexes": [
+          0
+        ],
+        "title": "Finally switched off."
       },
       {
         "text": "Host was extremely responsive, especially to my tweets.",
         "guest": "Group stay · arranged",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Aman",
+        "avatarSeed": 7,
+        "attachmentIndexes": [],
+        "title": "No distractions whatsoever."
       },
       {
         "text": "Peaceful. Couldn't tell anyone where I was, which I think was the point.",
         "guest": "City break · extended",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Nisha",
+        "avatarSeed": 8,
+        "attachmentIndexes": [
+          2
+        ],
+        "title": "Very quiet. Very monitored."
       }
     ],
     "images": [
       {
+        "src": "./assets/jails/alcatraz-cell.jpg",
+        "kind": "jail",
+        "label": "Cell interior",
+        "alt": "A narrow Alcatraz cell seen through bars, with a bed, basin and toilet.",
+        "caption": "Alcatraz, San Francisco",
+        "credit": "John Salatas",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prison_cell_in_Alcatraz.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "changes": "Resized for display; card framing may crop the image."
+      },
+      {
         "src": "./assets/unplugged-residency-hero.png",
         "alt": "A quiet cell with a steel desk, stool and simple plinth bed.",
         "label": "Room overview",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
       },
       {
         "src": "./assets/unplugged-residency-detail.png",
         "alt": "Close-up of the desk and empty charging cable in the Unplugged Residency.",
         "label": "A closer look",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
       },
       {
         "src": "./assets/editorial/delhi-october-police-response.webp",
@@ -339,7 +499,9 @@ export const properties = [
       "wellness",
       "breakfast",
       "frontdesk",
-      "meals"
+      "meals",
+      "pressure",
+      "wake"
     ],
     "nudge": {
       "text": "Therapists are already on their way.",
@@ -351,6 +513,22 @@ export const properties = [
         "lead": true,
         "group": "Wellness",
         "label": "fiction"
+      },
+      {
+        "text": "Pressure selected by therapist",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "pressure",
+        "addedInRefresh": true
+      },
+      {
+        "text": "Surprise midnight consultations",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "wake",
+        "addedInRefresh": true
       },
       {
         "text": "Deep-tissue, firm pressure",
@@ -379,17 +557,31 @@ export const properties = [
       {
         "text": "Very firm. Couldn't choose my therapist.",
         "guest": "Solo traveller · unplanned",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Ishaan",
+        "avatarSeed": 9,
+        "attachmentIndexes": [
+          1
+        ],
+        "title": "A firm recommendation."
       },
       {
         "text": "Did not request this treatment. Received it anyway. Thorough.",
         "guest": "Group stay · arranged",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Priya",
+        "avatarSeed": 10,
+        "attachmentIndexes": [],
+        "title": "Service before you ask."
       },
       {
         "text": "I came for the protest, stayed for the posture correction.",
         "guest": "City break · extended",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Arjun",
+        "avatarSeed": 11,
+        "attachmentIndexes": [],
+        "title": "Full-body experience."
       }
     ],
     "images": [
@@ -397,13 +589,27 @@ export const properties = [
         "src": "./assets/wellness-wing-hero.png",
         "alt": "A sunlit cream-and-green cell with a towel, bamboo stick and brass bowl arranged on a central plinth.",
         "label": "Room overview",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
+      },
+      {
+        "src": "./assets/jails/kilmainham-cell.jpg",
+        "kind": "jail",
+        "label": "Cell interior",
+        "alt": "A dark cell with a small window and writing across its walls.",
+        "caption": "Kilmainham Gaol, Dublin",
+        "credit": "GrimsbyT",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kilmainham_Gaol_cell.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "changes": "Resized for display; card framing may crop the image."
       },
       {
         "src": "./assets/wellness-wing-detail.png",
         "alt": "Close-up of the Wellness Wing towel, bamboo stick, brass bowl and neem leaves.",
         "label": "A closer look",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
       },
       {
         "src": "./assets/editorial/delhi-july-lathi-charge.jpg",
@@ -467,7 +673,10 @@ export const properties = [
       "courtyard",
       "breakfast",
       "frontdesk",
-      "meals"
+      "meals",
+      "air",
+      "mosquitoes",
+      "bathroom"
     ],
     "nudge": {
       "text": "Outdoor slots fill fast. All 20 minutes of them.",
@@ -479,6 +688,30 @@ export const properties = [
         "lead": true,
         "group": "Facilities",
         "label": "fiction"
+      },
+      {
+        "text": "Fresh air, subject to availability",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "air",
+        "addedInRefresh": true
+      },
+      {
+        "text": "Mosquitoes included. Repellent extra.",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "mosquitoes",
+        "addedInRefresh": true
+      },
+      {
+        "text": "Communal bathrooms",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "bathroom",
+        "addedInRefresh": true
       },
       {
         "text": "Fresh air during approved hours",
@@ -507,17 +740,33 @@ export const properties = [
       {
         "text": "Saw the sky. Lovely sky. Would like to see more of it.",
         "guest": "Solo traveller · unplanned",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Zoya",
+        "avatarSeed": 12,
+        "attachmentIndexes": [
+          1
+        ],
+        "title": "Fresh air, briefly."
       },
       {
         "text": "Staff were very attentive. Never let me out of their sight.",
         "guest": "Group stay · arranged",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Neel",
+        "avatarSeed": 13,
+        "attachmentIndexes": [],
+        "title": "A room with boundaries."
       },
       {
         "text": "Beautiful light at 4pm. I was told it was 4pm.",
         "guest": "City break · extended",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Kavya",
+        "avatarSeed": 14,
+        "attachmentIndexes": [
+          2
+        ],
+        "title": "Closer to nature."
       }
     ],
     "images": [
@@ -525,13 +774,27 @@ export const properties = [
         "src": "./assets/courtyard-view-hero.png",
         "alt": "A warm cell with two plinth beds and a barred door opening toward a tree-filled courtyard.",
         "label": "Room overview",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
+      },
+      {
+        "src": "./assets/jails/cellular-interior.jpg",
+        "kind": "jail",
+        "label": "Cell interior",
+        "alt": "Worn brick and plaster walls around a small barred window.",
+        "caption": "Cellular Jail, Port Blair",
+        "credit": "Harvinder Chandigarh",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cellular_Jail,_Port_Blair,_India,_inner_view_of_the_cell_of_prisoners.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "changes": "Resized for display; card framing may crop the image."
       },
       {
         "src": "./assets/courtyard-view-detail.png",
         "alt": "Close-up of the Courtyard View bed and brass bucket beside the courtyard entrance.",
         "label": "A closer look",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
       },
       {
         "src": "./assets/editorial/delhi-october-police-response.webp",
@@ -568,7 +831,10 @@ export const properties = [
     "filters": [
       "breakfast",
       "frontdesk",
-      "meals"
+      "meals",
+      "lighting",
+      "extensions",
+      "wake"
     ],
     "nudge": {
       "text": "Guests usually stay longer than planned.",
@@ -580,6 +846,30 @@ export const properties = [
         "lead": true,
         "group": "Facilities",
         "label": "fiction"
+      },
+      {
+        "text": "Lights-on turndown service",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "lighting",
+        "addedInRefresh": true
+      },
+      {
+        "text": "Automatic stay extensions",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "extensions",
+        "addedInRefresh": true
+      },
+      {
+        "text": "Surprise wake-up calls",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction",
+        "filter": "wake",
+        "addedInRefresh": true
       },
       {
         "text": "Flexible duration",
@@ -608,31 +898,59 @@ export const properties = [
       {
         "text": "Booked for a night. Into week three. Food's consistent.",
         "guest": "Solo traveller · unplanned",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Aditya",
+        "avatarSeed": 15,
+        "attachmentIndexes": [
+          0
+        ],
+        "title": "Excellent long-stay value."
       },
       {
         "text": "Zero restaurant decisions. Zero decisions in general.",
         "guest": "Group stay · arranged",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Maya",
+        "avatarSeed": 16,
+        "attachmentIndexes": [],
+        "title": "Still here."
       },
       {
         "text": "Would not stay again. Was not asked.",
         "guest": "City break · extended",
-        "label": "fiction"
+        "label": "fiction",
+        "name": "Rehan",
+        "avatarSeed": 17,
+        "attachmentIndexes": [],
+        "title": "No rush to leave."
       }
     ],
     "images": [
       {
+        "src": "./assets/jails/block-c-cell.jpg",
+        "kind": "jail",
+        "label": "Cell interior",
+        "alt": "An empty cell with peeling walls, a window, sink and toilet.",
+        "caption": "Cell interior, block C",
+        "credit": "Oliver Dixon",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_a_prison_cell_in_block_C_-_geograph.org.uk_-_7791614.jpg",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "changes": "Resized for display; card framing may crop the image."
+      },
+      {
         "src": "./assets/extended-stay-hero.png",
         "alt": "A cream-and-blue cell with a made bed, meal tray and caged ceiling fan.",
         "label": "Room overview",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
       },
       {
         "src": "./assets/extended-stay-detail.png",
         "alt": "Close-up of the meal tray and folded blankets in the Extended Stay.",
         "label": "A closer look",
-        "provenance": "AI-generated fictional interior; not a photograph of a real facility."
+        "provenance": "AI-generated fictional interior; not a photograph of a real facility.",
+        "kind": "generated"
       },
       {
         "src": "./assets/editorial/delhi-october-detentions.webp",
