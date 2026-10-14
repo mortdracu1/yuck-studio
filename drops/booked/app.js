@@ -1,10 +1,11 @@
-import {properties} from './catalogue.js?v=20261014-readbus';
-import {icons} from './icons.js?v=20261014-readbus';
+import {properties} from './catalogue.js?v=20261014-rv';
+import {icons} from './icons.js?v=20261014-rv';
 const $=(s)=>document.querySelector(s);
 const escape=(s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const icon=(name,cls='')=>`<svg class="icon ${cls}" viewBox="0 0 24 24" aria-hidden="true">${(icons[name]||icons.Info).map(([tag,attrs])=>`<${tag} ${Object.entries(attrs).map(([k,v])=>`${k}="${v}"`).join(' ')}/>`).join('')}</svg>`;
 const btn=(text,message,cls='')=>`<button aria-label="${escape(text.replace(/<[^>]*>/g,'').trim()||'Help and support')}" class="${cls}" data-message="${escape(message)}">${text}</button>`;
 let saved=[];try{saved=JSON.parse(localStorage.getItem('booked-saved')||'[]');if(!Array.isArray(saved))saved=[];}catch{}
+saved=saved.map(id=>id==='readbus'?'rv-stay':id);
 let toastTimer;
 function toast(message){$('#toast').textContent=message;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),3400);}
 function message(title,text){modal(title,`<p class="dialog-text">${text}</p><div class="dialog-footer"><button class="primary" data-close>Back to stays</button></div>`);}
@@ -33,7 +34,7 @@ const sortOptions=[['top','Our top picks'],['longest','Longest stay first'],['se
 function appURL(){return new URL(useHashRouting?(location.hash.slice(1)||'/'):location.href,'http://booked.local');}
 function routePath(){return appURL().pathname;}
 function urlFor(path){return useHashRouting?'#'+path:path;}
-function currentProperty(){const id=routePath().split('/')[2];return properties.find(p=>p.id===id);}
+function currentProperty(){const id=routePath().split('/')[2];return properties.find(p=>p.id===id||p.legacyId===id);}
 function arrivalLabel(){return state.arrival?new Date(state.arrival+'T12:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'Today';}
 function readQuery(){const q=appURL().searchParams;const area=q.get('area');state.area=properties.some(p=>p.area===area)?area:'Delhi';state.filters=new Set((q.get('filters')||'').split(',').filter(Boolean));state.sort=q.get('sort')||'top';state.grid=q.get('view')==='grid';state.savedOnly=q.get('saved')==='1';state.adults=Math.max(1,Math.min(20,Number(q.get('adults'))||1));const arrival=q.get('arrival')||'';state.arrival=/^\d{4}-\d{2}-\d{2}$/.test(arrival)&&!Number.isNaN(Date.parse(arrival))?arrival:'';}
 function resultsURL(){const q=new URLSearchParams();if(state.area!=='Delhi')q.set('area',state.area);if(state.filters.size)q.set('filters',[...state.filters].join(','));if(state.sort!=='top')q.set('sort',state.sort);if(state.grid)q.set('view','grid');if(state.savedOnly)q.set('saved','1');if(state.adults!==1)q.set('adults',state.adults);if(state.arrival)q.set('arrival',state.arrival);return '/'+(q.size?'?'+q:'');}

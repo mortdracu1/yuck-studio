@@ -15,19 +15,19 @@ export const sources = {
 
 export const properties = [
   {
-    "id": "readbus",
-    "slug": "readbus",
-    "name": "Readbus",
+    "id": "rv-stay",
+    "slug": "rv-stay",
+    "name": "RV Stay with Imran Khan",
     "exclusive": true,
-    "tagline": "For people who can read.",
-    "area": "Delhi depot",
-    "areaNote": "Parked overnight",
+    "tagline": "Your ride. Their itinerary.",
+    "area": "Holding area",
+    "areaNote": "Location withheld",
     "distanceJantarMantar": 0,
     "distanceLabel": "fiction",
     "score": 9.2,
-    "scoreWord": "Well read",
+    "scoreWord": "Unscheduled",
     "padlocks": 3,
-    "roomType": "Overnight sleeper · reclining seats · group accommodation",
+    "roomType": "Detention-bus stay · assigned seating · group accommodation",
     "checkout": "Subject to clearance",
     "filters": [
       "shared",
@@ -38,18 +38,18 @@ export const properties = [
       "transfer"
     ],
     "nudge": {
-      "text": "One destination. No departure time.",
+      "text": "Picked up before you could check in.",
       "label": "fiction"
     },
     "amenities": [
       {
-        "text": "Reclining seats",
+        "text": "Pickup arranged by the authorities",
         "lead": true,
         "group": "Facilities",
         "label": "fiction"
       },
       {
-        "text": "Overnight group accommodation",
+        "text": "Shared seating. Company guaranteed.",
         "lead": false,
         "group": "Facilities",
         "label": "fiction"
@@ -61,20 +61,20 @@ export const properties = [
         "label": "fiction"
       },
       {
-        "text": "Complimentary protest transfers",
+        "text": "Window views through security bars",
         "lead": false,
         "group": "Facilities",
         "label": "fiction"
       },
       {
-        "text": "Individual reading lights",
+        "text": "Driver-controlled itinerary",
         "lead": false,
         "group": "Facilities",
         "label": "fiction"
       }
     ],
     "description": {
-      "text": "An exclusive overnight stay in a stationary sleeper bus. Recline, read and settle in with your group: the coach is parked, the berths are assigned and the departure board has nothing for you. Checkout is subject to clearance.",
+      "text": "The RV experience, reinterpreted: a seat in a detention bus, a view through the bars and an itinerary decided for you. Group accommodation comes naturally when everyone is picked up together. Stay duration and checkout are subject to clearance.",
       "label": "fiction"
     },
     "finePrint": [],
@@ -82,9 +82,9 @@ export const properties = [
       {
         "name": "Ratna",
         "avatarSeed": 18,
-        "title": "Stationary, in a good way.",
-        "text": "Finished my book. Still waiting for the final chapter of my stay.",
-        "guest": "Overnight stay · group arrival",
+        "title": "A group trip I did not organise.",
+        "text": "Picked up with strangers. By the end we all had the same complaint.",
+        "guest": "Group arrival · assigned seat",
         "label": "fiction",
         "attachmentIndexes": [
           1
@@ -93,9 +93,9 @@ export const properties = [
       {
         "name": "Neha",
         "avatarSeed": 19,
-        "title": "Excellent reading lights.",
-        "text": "Plenty of legroom. Very little room for negotiation.",
-        "guest": "Solo reader · assigned seat",
+        "title": "The view came with a grille.",
+        "text": "Window seat confirmed. Window access denied.",
+        "guest": "Window seat · unscheduled stop",
         "label": "fiction",
         "attachmentIndexes": [
           2
@@ -104,38 +104,38 @@ export const properties = [
       {
         "name": "Sourav",
         "avatarSeed": 20,
-        "title": "The bus went nowhere.",
-        "text": "Exactly what I needed after a long day of being moved around.",
-        "guest": "Group stay · overnight",
+        "title": "Door-to-door service.",
+        "text": "The pickup was efficient. The destination was a surprise.",
+        "guest": "Group stay · transfer included",
         "label": "fiction",
         "attachmentIndexes": []
       }
     ],
     "images": [
       {
-        "src": "./assets/readbus/exterior.png",
+        "src": "./assets/rv-stay/detention-bus-exterior.png",
         "kind": "generated",
-        "label": "The overnight stop",
-        "alt": "A maroon sleeper bus parked in a quiet depot at dusk, with warm lights and cream curtains."
+        "label": "The arranged transport",
+        "alt": "Illustrative police transport bus with protected windows, parked beside barricades."
       },
       {
-        "src": "./assets/readbus/interior.png",
+        "src": "./assets/rv-stay/detention-bus-interior.png",
         "kind": "generated",
-        "label": "Shared sleeper interior",
-        "alt": "Maroon reclining seats and upper sleeping berths along the aisle of a parked sleeper bus."
+        "label": "Shared seating",
+        "alt": "Illustrative detention-bus interior with plain blue seats, a narrow aisle and mesh-covered windows."
       },
       {
-        "src": "./assets/readbus/reclining-seats.png",
+        "src": "./assets/rv-stay/detention-bus-window.png",
         "kind": "generated",
-        "label": "Recline and read",
-        "alt": "Reclining maroon seats, a folded blanket and an individual reading light beside cream curtains."
+        "label": "A view with boundaries",
+        "alt": "Illustrative blue bus seat beside a protected window overlooking a holding yard."
       },
       {
         "src": "./assets/readbus/imran-khan-ifp-original.jpg",
         "kind": "portrait",
         "label": "Archival portrait",
         "alt": "Actor Imran Khan seated at IFP, holding a microphone and wearing a black polo shirt.",
-        "caption": "Archival portrait of actor Imran Khan at IFP in 2023. Illustrative reference, not a Readbus host, guest endorsement or photograph of detention.",
+        "caption": "Archival portrait of actor Imran Khan at IFP in 2023. A reference for this fictional listing, not a detention photograph or endorsement.",
         "credit": "Bhatnagarritam",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Imran_Khan_making_a_public_comeback_at_IFP_after_almost_a_decade.jpg",
         "license": "CC BY-SA 4.0",
@@ -152,14 +152,15 @@ export const properties = [
       "roomType": "fiction",
       "score": "fiction",
       "reviews": "Fictional first-name guest profiles with illustrated avatars; not endorsements by real people.",
-      "images": "Bus images generated for an imagined experience. Archival actor portrait is independent illustrative context."
+      "images": "Generated detention-bus illustrations, not documentary evidence. Licensed archival actor portrait retained separately."
     },
     "context": {
-      "heading": "A news reference, not a guest appearance",
-      "text": "Actor Imran Khan was detained during a protest in Mumbai. This imagined stay is satire; he does not host or endorse Readbus.",
+      "heading": "Behind the listing",
+      "text": "Inspired by actor Imran Khan’s detention in a police vehicle in Mumbai. A fictional listing, not a hosted experience. Bus scenes are generated illustrations; his portrait is archival.",
       "sourceUrl": "https://indianexpress.com/article/entertainment/bollywood/imran-khan-detained-in-mumbai-amid-cjp-protest-prakash-raj-anurag-kashyap-slam-crackdown-10915805/",
       "sourceLabel": "Read the reporting"
-    }
+    },
+    "legacyId": "readbus"
   },
   {
     "id": "arrival-suite",
