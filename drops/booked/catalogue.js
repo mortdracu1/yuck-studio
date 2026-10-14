@@ -15,6 +15,153 @@ export const sources = {
 
 export const properties = [
   {
+    "id": "readbus",
+    "slug": "readbus",
+    "name": "Readbus",
+    "exclusive": true,
+    "tagline": "For people who can read.",
+    "area": "Delhi depot",
+    "areaNote": "Parked overnight",
+    "distanceJantarMantar": 0,
+    "distanceLabel": "fiction",
+    "score": 9.2,
+    "scoreWord": "Well read",
+    "padlocks": 3,
+    "roomType": "Overnight sleeper · reclining seats · group accommodation",
+    "checkout": "Subject to clearance",
+    "filters": [
+      "shared",
+      "exclusive",
+      "breakfast",
+      "frontdesk",
+      "meals",
+      "transfer"
+    ],
+    "nudge": {
+      "text": "One destination. No departure time.",
+      "label": "fiction"
+    },
+    "amenities": [
+      {
+        "text": "Reclining seats",
+        "lead": true,
+        "group": "Facilities",
+        "label": "fiction"
+      },
+      {
+        "text": "Overnight group accommodation",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction"
+      },
+      {
+        "text": "Checkout subject to clearance",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction"
+      },
+      {
+        "text": "Complimentary protest transfers",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction"
+      },
+      {
+        "text": "Individual reading lights",
+        "lead": false,
+        "group": "Facilities",
+        "label": "fiction"
+      }
+    ],
+    "description": {
+      "text": "An exclusive overnight stay in a stationary sleeper bus. Recline, read and settle in with your group: the coach is parked, the berths are assigned and the departure board has nothing for you. Checkout is subject to clearance.",
+      "label": "fiction"
+    },
+    "finePrint": [],
+    "reviews": [
+      {
+        "name": "Ratna",
+        "avatarSeed": 18,
+        "title": "Stationary, in a good way.",
+        "text": "Finished my book. Still waiting for the final chapter of my stay.",
+        "guest": "Overnight stay · group arrival",
+        "label": "fiction",
+        "attachmentIndexes": [
+          1
+        ]
+      },
+      {
+        "name": "Neha",
+        "avatarSeed": 19,
+        "title": "Excellent reading lights.",
+        "text": "Plenty of legroom. Very little room for negotiation.",
+        "guest": "Solo reader · assigned seat",
+        "label": "fiction",
+        "attachmentIndexes": [
+          2
+        ]
+      },
+      {
+        "name": "Sourav",
+        "avatarSeed": 20,
+        "title": "The bus went nowhere.",
+        "text": "Exactly what I needed after a long day of being moved around.",
+        "guest": "Group stay · overnight",
+        "label": "fiction",
+        "attachmentIndexes": []
+      }
+    ],
+    "images": [
+      {
+        "src": "./assets/readbus/exterior.png",
+        "kind": "generated",
+        "label": "The overnight stop",
+        "alt": "A maroon sleeper bus parked in a quiet depot at dusk, with warm lights and cream curtains."
+      },
+      {
+        "src": "./assets/readbus/interior.png",
+        "kind": "generated",
+        "label": "Shared sleeper interior",
+        "alt": "Maroon reclining seats and upper sleeping berths along the aisle of a parked sleeper bus."
+      },
+      {
+        "src": "./assets/readbus/reclining-seats.png",
+        "kind": "generated",
+        "label": "Recline and read",
+        "alt": "Reclining maroon seats, a folded blanket and an individual reading light beside cream curtains."
+      },
+      {
+        "src": "./assets/readbus/imran-khan-ifp-original.jpg",
+        "kind": "portrait",
+        "label": "Archival portrait",
+        "alt": "Actor Imran Khan seated at IFP, holding a microphone and wearing a black polo shirt.",
+        "caption": "Archival portrait of actor Imran Khan at IFP in 2023. Illustrative reference, not a Readbus host, guest endorsement or photograph of detention.",
+        "credit": "Bhatnagarritam",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Imran_Khan_making_a_public_comeback_at_IFP_after_almost_a_decade.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "changes": "Original image unaltered; browser-scaled without cropping.",
+        "capturedOn": "2023-10-22"
+      }
+    ],
+    "status": "ready",
+    "stayOrder": 0,
+    "provenance": {
+      "name": "fiction",
+      "area": "fictional setting",
+      "roomType": "fiction",
+      "score": "fiction",
+      "reviews": "Fictional first-name guest profiles with illustrated avatars; not endorsements by real people.",
+      "images": "Bus images generated for an imagined experience. Archival actor portrait is independent illustrative context."
+    },
+    "context": {
+      "heading": "A news reference, not a guest appearance",
+      "text": "Actor Imran Khan was detained during a protest in Mumbai. This imagined stay is satire; he does not host or endorse Readbus.",
+      "sourceUrl": "https://indianexpress.com/article/entertainment/bollywood/imran-khan-detained-in-mumbai-amid-cjp-protest-prakash-raj-anurag-kashyap-slam-crackdown-10915805/",
+      "sourceLabel": "Read the reporting"
+    }
+  },
+  {
     "id": "arrival-suite",
     "slug": "arrival-suite",
     "name": "The Arrival Suite",
@@ -87,15 +234,15 @@ export const properties = [
     ],
     "reviews": [
       {
-        "text": "Hadn't even switched off airplane mode.",
+        "text": "Delhi mein safest stay abhi jail hai. Criminals toh saare road pe ghoom rahe hain.",
         "guest": "Solo traveller · unplanned",
         "label": "fiction",
-        "name": "Ananya",
+        "name": "Abhijeet",
         "avatarSeed": 0,
         "attachmentIndexes": [
           1
         ],
-        "title": "Pickup was extremely efficient."
+        "title": "Safest stay in Delhi."
       },
       {
         "text": "Didn't book. Got picked up anyway. 10/10 initiative from staff.",
@@ -192,11 +339,10 @@ export const properties = [
     },
     "amenities": [
       {
-        "text": "Group transfers included",
+        "text": "Complimentary protest transfers. Wherever the protest has been moved today.",
         "lead": true,
         "group": "Facilities",
-        "label": "event",
-        "source": "S2"
+        "label": "fiction"
       },
       {
         "text": "Overpowering pee smell, included",
@@ -250,7 +396,7 @@ export const properties = [
         "text": "Came with friends. Left with friends. Eventually.",
         "guest": "Solo traveller · unplanned",
         "label": "fiction",
-        "name": "Rohan",
+        "name": "Ashutosh",
         "avatarSeed": 3,
         "attachmentIndexes": [
           0
@@ -408,7 +554,7 @@ export const properties = [
         "text": "Finally off my phone. Not my choice, but still.",
         "guest": "Solo traveller · unplanned",
         "label": "fiction",
-        "name": "Tara",
+        "name": "Sourav",
         "avatarSeed": 6,
         "attachmentIndexes": [
           0
@@ -558,7 +704,7 @@ export const properties = [
         "text": "Very firm. Couldn't choose my therapist.",
         "guest": "Solo traveller · unplanned",
         "label": "fiction",
-        "name": "Ishaan",
+        "name": "Neha",
         "avatarSeed": 9,
         "attachmentIndexes": [
           1
@@ -630,6 +776,13 @@ export const properties = [
       "score": "fiction"
     },
     "wellnessMenu": [
+      {
+        "name": "Pre-protest conditioning",
+        "description": "Get beaten up before the protest. Arrive in the right spirit.",
+        "duration": "Before arrival",
+        "price": "Complimentary",
+        "label": "fiction"
+      },
       {
         "name": "Signature Lathi Massage",
         "duration": "Until complete",
@@ -741,7 +894,7 @@ export const properties = [
         "text": "Saw the sky. Lovely sky. Would like to see more of it.",
         "guest": "Solo traveller · unplanned",
         "label": "fiction",
-        "name": "Zoya",
+        "name": "Ratna",
         "avatarSeed": 12,
         "attachmentIndexes": [
           1
