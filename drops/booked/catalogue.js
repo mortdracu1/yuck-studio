@@ -154,12 +154,6 @@ export const properties = [
       "reviews": "Fictional first-name guest profiles with illustrated avatars; not endorsements by real people.",
       "images": "Generated detention-bus illustrations, not documentary evidence. Licensed archival actor portrait retained separately."
     },
-    "context": {
-      "heading": "Behind the listing",
-      "text": "Inspired by actor Imran Khan’s detention in a police vehicle in Mumbai. A fictional listing, not a hosted experience. Bus scenes are generated illustrations; his portrait is archival.",
-      "sourceUrl": "https://indianexpress.com/article/entertainment/bollywood/imran-khan-detained-in-mumbai-amid-cjp-protest-prakash-raj-anurag-kashyap-slam-crackdown-10915805/",
-      "sourceLabel": "Read the reporting"
-    },
     "legacyId": "readbus"
   },
   {

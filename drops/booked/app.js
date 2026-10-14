@@ -1,5 +1,5 @@
-import {properties} from './catalogue.js?v=20261014-rv';
-import {icons} from './icons.js?v=20261014-rv';
+import {properties} from './catalogue.js?v=20261014-rv-clean';
+import {icons} from './icons.js?v=20261014-rv-clean';
 const $=(s)=>document.querySelector(s);
 const escape=(s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const icon=(name,cls='')=>`<svg class="icon ${cls}" viewBox="0 0 24 24" aria-hidden="true">${(icons[name]||icons.Info).map(([tag,attrs])=>`<${tag} ${Object.entries(attrs).map(([k,v])=>`${k}="${v}"`).join(' ')}/>`).join('')}</svg>`;
